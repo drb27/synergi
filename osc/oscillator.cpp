@@ -11,15 +11,12 @@
 
 s_namespace_2(synergi,engine)
 
-oscillator::oscillator()
+oscillator::oscillator(double f, double a) : freq(f), amplitude(a)
 {
-  // TODO Auto-generated constructor stub
-
 }
 
 oscillator::~oscillator()
 {
-  // TODO Auto-generated destructor stub
 }
 
 s_namespace_end_2
