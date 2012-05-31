@@ -10,3 +10,8 @@
 *.lai
 *.la
 *.a
+
+#project specific
+.project
+.cproject
+synergi
