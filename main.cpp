@@ -5,6 +5,8 @@
  *      Author: drb
  */
 
+#include "ns.h"
+#include "types.h"
 #include "oscillator.h"
 
 /********************************************************************************
@@ -18,8 +20,8 @@ int main (int argc, char** argv)
 {
   try
   {
-      // Create an oscillator
-      synergi::engine::oscillator o;
+      // Create an oscillator ptr
+      synergi::engine::oscillator* pO=NULL;
       return 0;
   }
   catch(...)

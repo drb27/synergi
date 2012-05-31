@@ -1,7 +1,7 @@
-COMMON=ns.h
+COMMON=ns.h types.h
 CFLAGS=
 CC=g++
-synergi: main.cpp oscillator.o
+synergi: main.cpp oscillator.o audiobuffer.o
 	$(CC) $(CFLAGS) main.cpp oscillator.cpp -o synergi -lasound
 
 %.o: %.cpp %.h $(COMMON)

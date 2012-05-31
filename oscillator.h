@@ -9,15 +9,24 @@
 #define OSCILLATOR_H_
 
 #include "ns.h"
+#include "audiobuffer.h"
 
 s_namespace_2(synergi,engine)
 
 class oscillator
 {
 public:
+
   oscillator();
-  virtual
-  ~oscillator();
+  oscillator(double);
+
+  virtual ~oscillator();
+
+  virtual void synthesize(audiobuffer& buffer, uint32_t samples)=0;
+
+private:
+  double freq;
+  double amplitude;
 };
 
 s_namespace_end_2

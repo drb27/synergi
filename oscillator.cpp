@@ -5,6 +5,7 @@
  *      Author: drb
  */
 
+#include "types.h"
 #include "ns.h"
 #include "oscillator.h"
 
