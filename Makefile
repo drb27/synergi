@@ -1,23 +1,22 @@
 ROOT=$(PWD)
 export ROOT
-include defs.mk
+COMMON=$(ROOT)/common/ns.h $(ROOT)/common/types.h
+CFLAGS=-I. -I$(ROOT)/common -I$(ROOT)
+CC=g++
 
 synergi: main.cpp osc/oscillator.o buf/audiobuffer.o
 	@echo $(ROOT)
 	$(CC) $(CFLAGS) main.cpp osc/oscillator.o buf/audiobuffer.o -o synergi -lasound
 
+
 %.o: %.cpp
 
-osc/oscillator.o : force_look
-buf/audiobuffer.o : force_look
+%.o: %.cpp %.h $(COMMON)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
-include rules.mk
 
 all: synergi
 
 clean:
-	rm synergi
+	rm -f synergi *.o osc/*.o buf/*.o
 
-force_look :
-	make -C osc
-	make -C buf
