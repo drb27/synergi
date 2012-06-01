@@ -8,11 +8,19 @@
 #ifndef AUDIOBUFFER_H_
 #define AUDIOBUFFER_H_
 
+#include <common/types.h>
+#include <common/ns.h>
+
 s_namespace_2(synergi,engine)
 
-class audiobuffer {
+class audiobuffer
+{
+
+private:
+	const uint32_t sampleRate;
+
 public:
-	audiobuffer();
+	audiobuffer(uint32_t rate);
 	virtual ~audiobuffer();
 };
 
