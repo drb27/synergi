@@ -13,9 +13,14 @@
 
 s_namespace_2(synergi,engine)
 
-class audiobuffer {
+class audiobuffer
+{
+
+private:
+	const uint32_t sampleRate;
+
 public:
-	audiobuffer();
+	audiobuffer(uint32_t rate);
 	virtual ~audiobuffer();
 };
 
