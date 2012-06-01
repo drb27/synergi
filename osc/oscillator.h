@@ -17,8 +17,7 @@ class oscillator
 {
 public:
 
-  oscillator();
-  oscillator(double);
+  oscillator(double f=440.0, double a=1.0);
 
   virtual ~oscillator();
 
