@@ -5,7 +5,7 @@
  *      Author: drb
  */
 
-#include "ns.h"
+#include <common/ns.h>
 #include "audiobuffer.h"
 
 s_namespace_2(synergi,engine)
