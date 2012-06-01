@@ -8,19 +8,26 @@
 #ifndef OSCILLATOR_H_
 #define OSCILLATOR_H_
 
-#include "ns.h"
+#include <common/ns.h>
+#include <common/types.h>
 #include <buf/audiobuffer.h>
+#include <exception>
 
 s_namespace_2(synergi,engine)
 
 class oscillator
 {
+  class synthesis : public std::exception
+    {
+    };
+
 public:
 
   oscillator(double f=440.0, double a=1.0);
 
   virtual ~oscillator();
 
+  // Fills an audio buffer with the requested number of samples
   virtual void synthesize(audiobuffer& buffer, uint32_t samples)=0;
 
 private:
