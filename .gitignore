@@ -12,6 +12,7 @@
 *.a
 
 #project specific
+.settings
 .project
 .cproject
 synergi
