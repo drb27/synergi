@@ -8,6 +8,9 @@
 #ifndef AUDIOBUFFER_H_
 #define AUDIOBUFFER_H_
 
+#include <common/types.h>
+#include <common/ns.h>
+
 s_namespace_2(synergi,engine)
 
 class audiobuffer {
@@ -16,6 +19,7 @@ public:
 	virtual ~audiobuffer();
 };
 
+s_namespace_end_2
+
 #endif /* AUDIOBUFFER_H_ */
 
-s_namespace_end_2

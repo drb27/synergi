@@ -18,6 +18,7 @@ class silence : public oscillator {
 public:
 	silence();
 	virtual ~silence();
+	virtual void synthesize(audiobuffer&,uint32_t);
 };
 
 s_namespace_end_2

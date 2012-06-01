@@ -17,11 +17,12 @@ s_namespace_2(synergi,engine)
 
 class oscillator
 {
-  class synthesis : public std::exception
-    {
-    };
 
 public:
+
+	  class synthesis : public std::exception
+	    {
+	    };
 
   oscillator(double f=440.0, double a=1.0);
 
