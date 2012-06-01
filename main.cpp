@@ -5,9 +5,9 @@
  *      Author: drb
  */
 
-#include "ns.h"
-#include "types.h"
-#include "oscillator.h"
+#include <common/ns.h>
+#include <common/types.h>
+#include <osc/oscillator.h>
 
 /********************************************************************************
  * FN: main()

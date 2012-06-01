@@ -9,7 +9,7 @@
 #define OSCILLATOR_H_
 
 #include "ns.h"
-#include "audiobuffer.h"
+#include <buf/audiobuffer.h>
 
 s_namespace_2(synergi,engine)
 
