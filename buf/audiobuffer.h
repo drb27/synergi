@@ -10,6 +10,7 @@
 
 #include <common/types.h>
 #include <common/ns.h>
+#include "basic.h"
 #include <exception>
 
 #define DEFAULT_SAMPLE_RATE 44100
@@ -52,7 +53,7 @@ public:
 	void insert(byte_t data);
 	byte_t extract(void);
 
-	audiobuffer& operator<<(byte_t* rawBuffer);
+	audiobuffer& operator<<(const rawbuffer_t& rawBuffer);
 };
 
 s_namespace_end_2

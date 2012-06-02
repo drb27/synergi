@@ -31,7 +31,7 @@ audiobuffer::~audiobuffer()
 	free(base);
 }
 
-audiobuffer& audiobuffer::operator<<(byte_t* rawBuffer)
+audiobuffer& audiobuffer::operator<<(const rawbuffer_t& rawBuffer)
 {
 	return *this;
 }
