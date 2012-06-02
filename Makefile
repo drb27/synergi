@@ -18,6 +18,7 @@ test: $(TESTDEPS) $(TESTED)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 all: synergi test
+	./test
 
 clean:
 	rm -f synergi test *.o osc/*.o buf/*.o tst/*.o
