@@ -49,4 +49,18 @@ void audiobuffer::insert(byte_t data)
 		throw overrun();
 }
 
+byte_t audiobuffer::extract(void)
+{
+	if (!is_empty())
+	{
+		byte_t retVal = *(pNextReadByte++);
+		if (pNextReadByte >= (base+size))
+			pNextReadByte=base;
+		latestOp = read;
+		return retVal;
+	}
+	else
+		throw underrun();
+}
+
 s_namespace_end_2
