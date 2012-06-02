@@ -28,7 +28,7 @@ void test_buffer()
 	using synergi::engine::circularbuffer;
 
 	// Create an audio buffer at 44.1kHz and 5 bytes long
-	circularbuffer x(44100,5);
+	circularbuffer<synergi::byte_t> x(44100,5);
 }
 
 /********************************************************************************

@@ -12,7 +12,8 @@
 
 s_namespace_2(synergi,engine)
 
-circularbuffer::circularbuffer(uint32_t rate, uint32_t sz) : sampleRate(rate), size(sz), latestOp(read)
+template<class T>
+circularbuffer<T>::circularbuffer(uint32_t rate, uint32_t sz) : sampleRate(rate), size(sz), latestOp(read)
 {
 	// Allocate memory for the buffer
 	base = (byte_t*)calloc(sz,1);
@@ -26,17 +27,20 @@ circularbuffer::circularbuffer(uint32_t rate, uint32_t sz) : sampleRate(rate), s
 
 }
 
-circularbuffer::~circularbuffer()
+template<class T>
+circularbuffer<T>::~circularbuffer()
 {
 	free(base);
 }
 
-circularbuffer& circularbuffer::operator<<(const rawbuffer_t& rawBuffer)
+template<class T>
+circularbuffer<T>& circularbuffer<T>::operator<<(const rawbuffer_t& rawBuffer)
 {
 	return *this;
 }
 
-void circularbuffer::insert(byte_t data)
+template<class T>
+void circularbuffer<T>::insert(T data)
 {
 	if (!is_full())
 	{
@@ -49,11 +53,12 @@ void circularbuffer::insert(byte_t data)
 		throw overrun();
 }
 
-byte_t circularbuffer::extract(void)
+template<class T>
+T circularbuffer<T>::extract(void)
 {
 	if (!is_empty())
 	{
-		byte_t retVal = *(pNextReadByte++);
+		T retVal = *(pNextReadByte++);
 		if (pNextReadByte >= (base+size))
 			pNextReadByte=base;
 		latestOp = read;
@@ -63,7 +68,8 @@ byte_t circularbuffer::extract(void)
 		throw underrun();
 }
 
-uint32_t circularbuffer::length(void) const
+template<class T>
+uint32_t circularbuffer<T>::length(void) const
 {
 	if (is_empty()) return 0;
 	if (is_full()) return capacity();
@@ -79,6 +85,6 @@ uint32_t circularbuffer::length(void) const
 }
 
 
-
+template class synergi::engine::circularbuffer<synergi::byte_t>;
 
 s_namespace_end_2

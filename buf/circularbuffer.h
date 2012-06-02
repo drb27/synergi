@@ -18,6 +18,7 @@
 
 s_namespace_2(synergi,engine)
 
+template<class T>
 class circularbuffer
 {
 public:
@@ -35,10 +36,10 @@ private:
 
 	const uint32_t sampleRate;
 
-	byte_t* pNextWriteByte;		// Pointer to the most recently added byte in the buffer
-	byte_t* pNextReadByte;		// Pointer to the next readable byte in the buffer
+	T* pNextWriteByte;		// Pointer to the most recently added byte in the buffer
+	T* pNextReadByte;		// Pointer to the next readable byte in the buffer
 	const uint32_t size;		// The total size of the buffer
-	byte_t* base;				// Always points to the first byte of the raw buffer
+	T* base;				// Always points to the first byte of the raw buffer
 	op latestOp;				// Was the last op a read or a write?
 
 public:
@@ -50,8 +51,8 @@ public:
 	inline uint32_t sample_rate() const { return sampleRate; }
 	uint32_t length() const;
 	inline uint32_t capacity() const { return size; }
-	void insert(byte_t data);
-	byte_t extract(void);
+	void insert(T data);
+	T extract(void);
 
 	circularbuffer& operator<<(const rawbuffer_t& rawBuffer);
 };
