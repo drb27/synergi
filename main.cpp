@@ -53,6 +53,16 @@ void test_buffer()
 		cout << GREEN("PASS") << endl;
 	}
 
+	cout << "Empty buffer ------> length() ... ";
+		if (!(x.length()==0))
+		{
+			cout << RED("FAIL") << endl;
+		}
+		else
+		{
+			cout << GREEN("PASS") << endl;
+		}
+
 	//////////////////////////////////// PARTIAL BUFFER /////////////////////////////
 	x.insert(0xFF);
 	x.insert(0xFF);
@@ -77,6 +87,17 @@ void test_buffer()
 	{
 		cout << GREEN("PASS") << endl;
 	}
+
+	cout << "Partial buffer ------> length() ... ";
+		if (!(x.length()==2))
+		{
+			cout << RED("FAIL") << endl;
+		}
+		else
+		{
+			cout << GREEN("PASS") << endl;
+		}
+
 
 	//////////////////////////////////// FULL BUFFER (a) //////////////////////////
 	x.insert(0xFF);
@@ -103,6 +124,17 @@ void test_buffer()
 	{
 		cout << GREEN("PASS") << endl;
 	}
+	cout << "capacity=" << x.capacity() << endl;
+	cout << "length=" << x.length() << endl;
+	cout << "Full buffer ------> length() ... ";
+		if (!(x.length()==x.capacity()))
+		{
+			cout << RED("FAIL") << endl;
+		}
+		else
+		{
+			cout << GREEN("PASS") << endl;
+		}
 }
 
 /********************************************************************************
