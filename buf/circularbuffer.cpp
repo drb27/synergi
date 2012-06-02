@@ -1,5 +1,5 @@
 /*
- * audiobuffer.cpp
+ * circularbuffer.cpp
  *
  *  Created on: May 31, 2012
  *      Author: drb
@@ -7,12 +7,12 @@
 
 #include <common/ns.h>
 #include <common/types.h>
-#include "audiobuffer.h"
+#include "circularbuffer.h"
 #include <stdlib.h>
 
 s_namespace_2(synergi,engine)
 
-audiobuffer::audiobuffer(uint32_t rate, uint32_t sz) : sampleRate(rate), size(sz), latestOp(read)
+circularbuffer::circularbuffer(uint32_t rate, uint32_t sz) : sampleRate(rate), size(sz), latestOp(read)
 {
 	// Allocate memory for the buffer
 	base = (byte_t*)calloc(sz,1);
@@ -26,17 +26,17 @@ audiobuffer::audiobuffer(uint32_t rate, uint32_t sz) : sampleRate(rate), size(sz
 
 }
 
-audiobuffer::~audiobuffer()
+circularbuffer::~circularbuffer()
 {
 	free(base);
 }
 
-audiobuffer& audiobuffer::operator<<(const rawbuffer_t& rawBuffer)
+circularbuffer& circularbuffer::operator<<(const rawbuffer_t& rawBuffer)
 {
 	return *this;
 }
 
-void audiobuffer::insert(byte_t data)
+void circularbuffer::insert(byte_t data)
 {
 	if (!is_full())
 	{
@@ -49,7 +49,7 @@ void audiobuffer::insert(byte_t data)
 		throw overrun();
 }
 
-byte_t audiobuffer::extract(void)
+byte_t circularbuffer::extract(void)
 {
 	if (!is_empty())
 	{
@@ -63,7 +63,7 @@ byte_t audiobuffer::extract(void)
 		throw underrun();
 }
 
-uint32_t audiobuffer::length(void) const
+uint32_t circularbuffer::length(void) const
 {
 	if (is_empty()) return 0;
 	if (is_full()) return capacity();

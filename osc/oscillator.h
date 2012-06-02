@@ -10,7 +10,7 @@
 
 #include <common/ns.h>
 #include <common/types.h>
-#include <buf/audiobuffer.h>
+#include <buf/circularbuffer.h>
 #include <exception>
 
 s_namespace_2(synergi,engine)
@@ -29,7 +29,7 @@ public:
   virtual ~oscillator();
 
   // Fills an audio buffer with the requested number of samples
-  virtual void synthesize(audiobuffer& buffer, uint32_t samples)=0;
+  virtual void synthesize(circularbuffer& buffer, uint32_t samples)=0;
 
 private:
   double freq;

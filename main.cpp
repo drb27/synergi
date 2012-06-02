@@ -8,7 +8,7 @@
 #include <common/ns.h>
 #include <common/types.h>
 #include <osc/oscillator.h>
-#include <buf/audiobuffer.h>
+#include <buf/circularbuffer.h>
 #include <iostream>
 
 #define GREEN(X) "\33[32;40m" << X << "\33[0m"
@@ -25,10 +25,10 @@ using namespace std;
  */
 void test_buffer()
 {
-	using synergi::engine::audiobuffer;
+	using synergi::engine::circularbuffer;
 
 	// Create an audio buffer at 44.1kHz and 5 bytes long
-	audiobuffer x(44100,5);
+	circularbuffer x(44100,5);
 
 	//////////////////////////////////// EMPTY BUFFER /////////////////////////////
 	cout << "Empty buffer ------> is_empty() ... ";
