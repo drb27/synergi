@@ -9,6 +9,101 @@
 #include <common/types.h>
 #include <osc/oscillator.h>
 #include <buf/audiobuffer.h>
+#include <iostream>
+
+#define GREEN(X) "\33[32;40m" << X << "\33[0m"
+#define RED(X) "\33[0;31m" << X << "\33[0m"
+
+using namespace std;
+
+/********************************************************************************
+ * FN: test_buffer()
+ *
+ * DS: Tests the buffer class
+ *
+ * RT: null
+ */
+void test_buffer()
+{
+	using synergi::engine::audiobuffer;
+
+	// Create an audio buffer at 44.1kHz and 5 bytes long
+	audiobuffer x(44100,5);
+
+	//////////////////////////////////// EMPTY BUFFER /////////////////////////////
+	cout << "Empty buffer ------> is_empty() ... ";
+	// test that it is, in fact, empty
+	if (x.is_empty())
+	{
+		cout << GREEN("PASS") << endl;
+	}
+	else
+	{
+		cout << RED("FAIL")  << endl;
+	}
+
+	cout << "Empty buffer ------> is_full() ... ";
+	// test that it is, in fact, empty
+	if (x.is_full())
+	{
+		cout << RED("FAIL") << endl;
+	}
+	else
+	{
+		cout << GREEN("PASS") << endl;
+	}
+
+	//////////////////////////////////// PARTIAL BUFFER /////////////////////////////
+	x.insert(0xFF);
+	x.insert(0xFF);
+
+	cout << "Partial buffer ------> is_full() ... ";
+
+	if (!x.is_empty())
+	{
+		cout << GREEN("PASS") << endl;
+	}
+	else
+	{
+		cout << RED("FAIL")  << endl;
+	}
+
+	cout << "Partial buffer ------> is_full() ... ";
+	if (x.is_full())
+	{
+		cout << RED("FAIL") << endl;
+	}
+	else
+	{
+		cout << GREEN("PASS") << endl;
+	}
+
+	//////////////////////////////////// FULL BUFFER (a) //////////////////////////
+	x.insert(0xFF);
+	x.insert(0xFF);
+	x.insert(0xFF);
+	cout << "Full buffer ------> is_empty() ... ";
+
+	if (!x.is_empty())
+	{
+		cout << GREEN("PASS") << endl;
+	}
+	else
+	{
+		cout << RED("FAIL")  << endl;
+	}
+
+	cout << "Full buffer ------> is_full() ... ";
+
+	if (!x.is_full())
+	{
+		cout << RED("FAIL") << endl;
+	}
+	else
+	{
+		cout << GREEN("PASS") << endl;
+	}
+}
 
 /********************************************************************************
  * FN: main()
@@ -21,12 +116,7 @@ int main (int argc, char** argv)
 {
   try
   {
-	  // Create an audio buffer at 44.1kHz
-	  synergi::engine::audiobuffer buf;
-
-	  // Pipe some stuff into it
-	  synergi::byte_t b[128];
-	  buf << b;
+	  test_buffer();
 
       // Create an oscillator ptr
       synergi::engine::oscillator* pO=NULL;
@@ -34,6 +124,6 @@ int main (int argc, char** argv)
   }
   catch(...)
   {
-      return -1;
+      std::cout << RED("EXCEPTION CAUGHT: ABORTING TEST") << std::endl;
   }
 }
