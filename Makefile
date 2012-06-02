@@ -17,7 +17,7 @@ test: $(TESTDEPS) $(TESTED)
 %.o: %.cpp %.h $(COMMON)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-all: synergi
+all: synergi test
 
 clean:
 	rm -f synergi test *.o osc/*.o buf/*.o tst/*.o

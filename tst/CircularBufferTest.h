@@ -30,10 +30,24 @@ public:
 	CircularBufferTest() {}
 	virtual ~CircularBufferTest() {}
 
-	void testSomething();
+	void new_is_empty();
+	void new_not_full();
+	void partial_not_empty();
+	void partial_not_full();
+	void insert_remove_is_empty();
+	void underrun();
+	void overrun();
+	void simple_wrap();
 
 	CPPUNIT_TEST_SUITE( CircularBufferTest );
-	CPPUNIT_TEST( testSomething );
+	CPPUNIT_TEST( new_is_empty );
+	CPPUNIT_TEST( new_not_full );
+	CPPUNIT_TEST( partial_not_empty );
+	CPPUNIT_TEST( partial_not_full );
+	CPPUNIT_TEST( insert_remove_is_empty );
+	CPPUNIT_TEST( underrun );
+	CPPUNIT_TEST( overrun );
+	CPPUNIT_TEST( simple_wrap );
 	CPPUNIT_TEST_SUITE_END();
 };
 
