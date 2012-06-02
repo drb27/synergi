@@ -1,15 +1,16 @@
 /*
- * audiobuffer.h
+ * circularbuffer.h
  *
  *  Created on: May 31, 2012
  *      Author: drb
  */
 
-#ifndef AUDIOBUFFER_H_
-#define AUDIOBUFFER_H_
+#ifndef CIRCULARBUFFER_H_
+#define CIRCULARBUFFER_H_
 
 #include <common/types.h>
 #include <common/ns.h>
+#include "basic.h"
 #include <exception>
 
 #define DEFAULT_SAMPLE_RATE 44100
@@ -17,7 +18,7 @@
 
 s_namespace_2(synergi,engine)
 
-class audiobuffer
+class circularbuffer
 {
 public:
 	class allocationfailed : public std::exception {};
@@ -41,8 +42,8 @@ private:
 	op latestOp;				// Was the last op a read or a write?
 
 public:
-	audiobuffer(uint32_t rate = DEFAULT_SAMPLE_RATE, uint32_t sz = DEFAULT_SIZE);
-	virtual ~audiobuffer();
+	circularbuffer(uint32_t rate = DEFAULT_SAMPLE_RATE, uint32_t sz = DEFAULT_SIZE);
+	virtual ~circularbuffer();
 
 	inline bool is_empty() const { return ((pNextWriteByte==pNextReadByte)&&(latestOp==read)); }
 	inline bool is_full() const { return ((pNextWriteByte==pNextReadByte)&&(latestOp==write)); }
@@ -52,10 +53,10 @@ public:
 	void insert(byte_t data);
 	byte_t extract(void);
 
-	audiobuffer& operator<<(byte_t* rawBuffer);
+	circularbuffer& operator<<(const rawbuffer_t& rawBuffer);
 };
 
 s_namespace_end_2
 
-#endif /* AUDIOBUFFER_H_ */
+#endif /* CIRCULARBUFFER_H_ */
 
