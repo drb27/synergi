@@ -47,7 +47,7 @@ public:
 	inline bool is_empty() const { return ((pNextWriteByte==pNextReadByte)&&(latestOp==read)); }
 	inline bool is_full() const { return ((pNextWriteByte==pNextReadByte)&&(latestOp==write)); }
 	inline uint32_t sample_rate() const { return sampleRate; }
-	inline uint32_t length() const { return 0; }
+	uint32_t length() const;
 	inline uint32_t capacity() const { return size; }
 	void insert(byte_t data);
 	byte_t extract(void);

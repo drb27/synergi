@@ -63,4 +63,22 @@ byte_t audiobuffer::extract(void)
 		throw underrun();
 }
 
+uint32_t audiobuffer::length(void) const
+{
+	if (is_empty()) return 0;
+	if (is_full()) return capacity();
+
+	if (pNextWriteByte>pNextReadByte)
+	{
+		return pNextWriteByte-pNextReadByte;
+	}
+	else
+	{
+		return pNextWriteByte+capacity()-pNextReadByte;
+	}
+}
+
+
+
+
 s_namespace_end_2
