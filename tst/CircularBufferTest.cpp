@@ -13,10 +13,11 @@
 #include <buf/circularbuffer.h>
 
 using namespace CppUnit;
-using synergi::engine::circularbuffer;
 
 namespace synergi {
 namespace test {
+
+typedef synergi::engine::circularbuffer<synergi::byte_t> circularbuffer;
 
 void CircularBufferTest::new_is_empty()
 {
