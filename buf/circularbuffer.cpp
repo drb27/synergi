@@ -16,7 +16,7 @@ template<class T>
 circularbuffer<T>::circularbuffer(uint32_t rate, uint32_t sz) : sampleRate(rate), size(sz), latestOp(read)
 {
 	// Allocate memory for the buffer
-	base = (byte_t*)calloc(sz,1);
+	base = (T*)calloc(sz,sizeof(T));
 
 	// Check for success
 	if (!base) throw allocationfailed();
