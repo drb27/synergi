@@ -7,7 +7,7 @@
 
 #include <common/ns.h>
 #include <common/types.h>
-#include <buf/audiobuffer.h>
+#include <buf/circularbuffer.h>
 #include "silence.h"
 
 s_namespace_2(synergi,engine)
@@ -21,7 +21,7 @@ silence::~silence() {
 	// TODO Auto-generated destructor stub
 }
 
-void silence::synthesize(audiobuffer& buffer, uint32_t samples)
+void silence::synthesize(circularbuffer& buffer, uint32_t samples)
 {
 	oscillator::synthesis x;
 	throw x;
