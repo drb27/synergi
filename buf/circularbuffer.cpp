@@ -86,5 +86,6 @@ uint32_t circularbuffer<T>::length(void) const
 
 
 template class synergi::engine::circularbuffer<synergi::byte_t>;
+template class synergi::engine::circularbuffer<uint16_t>;
 
 s_namespace_end_2

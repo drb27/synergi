@@ -17,7 +17,7 @@ using namespace CppUnit;
 namespace synergi {
 namespace test {
 
-typedef synergi::engine::circularbuffer<synergi::byte_t> circularbuffer;
+typedef synergi::engine::circularbuffer<uint16_t> circularbuffer;
 
 void CircularBufferTest::new_is_empty()
 {
@@ -47,12 +47,12 @@ void CircularBufferTest::partial_not_full()
 
 void CircularBufferTest::insert_remove_is_empty()
 {
-	const byte_t testBytes[] = {0xAA,0xBB};
+	const uint16_t testSamples[] = {0xAABB,0xCCDD};
 	circularbuffer b;
-	b.insert(testBytes[0]);
-	b.insert(testBytes[1]);
-	CPPUNIT_ASSERT_MESSAGE("emptied buffer returned wrong contents", b.extract()==testBytes[0]);
-	CPPUNIT_ASSERT_MESSAGE("emptied buffer returned wrong contents", b.extract()==testBytes[1]);
+	b.insert(testSamples[0]);
+	b.insert(testSamples[1]);
+	CPPUNIT_ASSERT_MESSAGE("emptied buffer returned wrong contents", b.extract()==testSamples[0]);
+	CPPUNIT_ASSERT_MESSAGE("emptied buffer returned wrong contents", b.extract()==testSamples[1]);
 	CPPUNIT_ASSERT_MESSAGE("emptied buffer does not report empty", b.is_empty());
 }
 
@@ -93,7 +93,7 @@ void CircularBufferTest::simple_wrap()
 	// Populate a local buffer with some data
 	for( byte_t* ptr = data.get(); c<sz ; *(ptr++)=c++ );
 
-	b.insert(0xAA);
+	b.insert(0xAABB);
 	b.insert(0xAA);
 	b.insert(0xAA);
 
