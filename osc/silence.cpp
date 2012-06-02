@@ -21,10 +21,10 @@ silence::~silence() {
 	// TODO Auto-generated destructor stub
 }
 
-void silence::synthesize(circularbuffer& buffer, uint32_t samples)
-{
-	oscillator::synthesis x;
-	throw x;
-}
+//void silence::synthesize(circularbuffer& buffer, uint32_t samples)
+//{
+//	oscillator::synthesis x;
+//	throw x;
+//}
 
 s_namespace_end_2
