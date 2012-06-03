@@ -13,7 +13,8 @@
 s_namespace_2(synergi,engine)
 
 template<class T>
-circularbuffer<T>::circularbuffer(uint32_t rate, uint32_t sz) : sampleRate(rate), size(sz), latestOp(read)
+circularbuffer<T>::circularbuffer(uint32_t rate, uint32_t sz, ChannelConfig cc)
+	: sampleRate(rate), size(sz), latestOp(read), chnConfig(cc)
 {
 	// Allocate memory for the buffer
 	base = (T*)calloc(sz,sizeof(T));
@@ -82,6 +83,25 @@ uint32_t circularbuffer<T>::length(void) const
 	{
 		return pNextWriteByte+capacity()-pNextReadByte;
 	}
+}
+
+template<class T>
+circularbuffer<T>& circularbuffer<T>::operator >>(rawbuffer_t& buffer)
+{
+	// Check that the raw buffer can take our output
+	if ( buffer.size >= sizeof(T)*length())
+	{
+		buffer.count = sizeof(T)*length();
+		T* pOut = (T*)buffer.buffer;
+		while (!is_empty())
+		{
+			*(pOut++) = extract();
+		}
+
+	}
+	else
+		throw underrun();
+	return *this;
 }
 
 
