@@ -29,7 +29,7 @@ public:
   virtual ~oscillator();
 
   // Fills an audio buffer with the requested number of samples
-  //virtual void synthesize(circularbuffer& buffer, uint32_t samples)=0;
+  virtual void synthesize(circularbuffer<uint16_t>& buffer, uint32_t samples)=0;
 
 private:
   double freq;

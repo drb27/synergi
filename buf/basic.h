@@ -10,13 +10,22 @@
 
 #include <common/types.h>
 #include <common/ns.h>
+#include <stdlib.h>
 
 s_namespace_2(synergi,engine)
 
 struct rawbuffer_t
 {
-  byte_t* buffer;
-  uint32_t size;
+	rawbuffer_t(uint32_t sz)
+	{
+		buffer=(byte_t*)calloc(sz,1);
+		size=sz;
+		count=0;
+	}
+
+	byte_t* buffer;
+	uint32_t size;
+	uint32_t count;
 };
 
 s_namespace_end_2
