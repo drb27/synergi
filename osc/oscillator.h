@@ -73,6 +73,12 @@ protected:
 
     virtual void add(midi::note_t note, const rawbuffer_t& buf)
     {
+      if (find(note)!=end())
+        {
+          const rawbuffer_t* pBuf = (*find(note)).second;
+          delete pBuf;
+          erase(note);
+        }
       (*this)[note] = &buf;
     }
   };
