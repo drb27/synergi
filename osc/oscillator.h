@@ -12,11 +12,23 @@
 #include <common/types.h>
 #include <buf/circularbuffer.h>
 #include <exception>
+#include <map>
+#include <eng/midi.h>
+#include <iostream>
+
+namespace synergi
+{
+  namespace test
+  {
+    class WavetableTest;
+  }
+}
 
 s_namespace_2(synergi,engine)
 
 class oscillator
 {
+  friend class synergi::test::WavetableTest;
 
 public:
 
@@ -34,6 +46,38 @@ public:
 private:
   double freq;
   double amplitude;
+
+protected:
+
+  class wavetable : protected std::map<synergi::engine::midi::note_t,const rawbuffer_t*>
+  {
+  protected:
+    typedef std::map<synergi::engine::midi::note_t,const rawbuffer_t*> parent;
+
+  public:
+    virtual void clear()
+    {
+
+      // Free all buffers
+      for ( parent::iterator i = begin(); i!=end(); i++)
+        {
+          delete (*i).second;
+        }
+      parent::clear();
+    }
+
+    virtual ~wavetable()
+    {
+      clear();
+    }
+
+    virtual void add(midi::note_t note, const rawbuffer_t& buf)
+    {
+      (*this)[note] = &buf;
+    }
+  };
+
+  wavetable waveTable;
 };
 
 s_namespace_end_2

@@ -11,8 +11,10 @@
 #include <common/ns.h>
 #include <common/types.h>
 #include "CircularBufferTest.h"
+#include "WavetableTest.h"
 
 CPPUNIT_TEST_SUITE_REGISTRATION(synergi::test::CircularBufferTest);
+CPPUNIT_TEST_SUITE_REGISTRATION(synergi::test::WavetableTest);
 
 /********************************************************************************
  * FN: main()

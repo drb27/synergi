@@ -23,6 +23,11 @@ struct rawbuffer_t
 		count=0;
 	}
 
+	virtual ~rawbuffer_t()
+	{
+	  free(buffer);
+	}
+
 	byte_t* buffer;
 	uint32_t size;
 	uint32_t count;

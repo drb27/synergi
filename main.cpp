@@ -191,10 +191,7 @@ int main (int argc, char** argv)
 {
   try
   {
-	  test_buffer();
-
-      // Create an oscillator ptr
-      synergi::engine::oscillator* pO=NULL;
+      test_buffer();
       return 0;
   }
   catch(...)

@@ -16,6 +16,7 @@ s_namespace_2(synergi,engine)
 namespace midi
 {
 
+  typedef uint8_t note_t;
 
 }
 

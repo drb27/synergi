@@ -13,6 +13,7 @@ s_namespace_2(synergi,engine)
 
 oscillator::oscillator(double f, double a) : freq(f), amplitude(a)
 {
+
 }
 
 oscillator::~oscillator()
