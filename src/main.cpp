@@ -5,11 +5,11 @@
  *      Author: drb
  */
 
-#include <common/ns.h>
-#include <common/types.h>
-#include <buf/circularbuffer.h>
-#include <osc/oscillator.h>
-#include <osc/puresine.h>
+#include "common/ns.h"
+#include "common/types.h"
+#include "buf/circularbuffer.h"
+#include "osc/oscillator.h"
+#include "osc/puresine.h"
 #include <iostream>
 #include <alsa/asoundef.h>
 #include <alsa/asoundlib.h>

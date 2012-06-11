@@ -8,8 +8,8 @@
 #ifndef BASIC_H_
 #define BASIC_H_
 
-#include <common/types.h>
-#include <common/ns.h>
+#include "common/types.h"
+#include "common/ns.h"
 #include <stdlib.h>
 
 s_namespace_2(synergi,engine)

@@ -8,12 +8,12 @@
 #ifndef OSCILLATOR_H_
 #define OSCILLATOR_H_
 
-#include <common/ns.h>
-#include <common/types.h>
-#include <buf/circularbuffer.h>
+#include "common/ns.h"
+#include "common/types.h"
+#include "buf/circularbuffer.h"
 #include <exception>
 #include <map>
-#include <eng/midi.h>
+#include "eng/midi.h"
 #include <iostream>
 
 namespace synergi

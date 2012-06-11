@@ -12,7 +12,7 @@
 #include "WavetableTest.h"
 #include "osc/oscillator.h"
 #include <malloc.h>
-#include <buf/basic.h>
+#include "buf/basic.h"
 
 using namespace CppUnit;
 

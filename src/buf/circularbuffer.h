@@ -8,8 +8,8 @@
 #ifndef CIRCULARBUFFER_H_
 #define CIRCULARBUFFER_H_
 
-#include <common/types.h>
-#include <common/ns.h>
+#include "common/types.h"
+#include "common/ns.h"
 #include "basic.h"
 #include <exception>
 

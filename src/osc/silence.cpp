@@ -5,9 +5,9 @@
  *      Author: drb
  */
 
-#include <common/ns.h>
-#include <common/types.h>
-#include <buf/circularbuffer.h>
+#include "common/ns.h"
+#include "common/types.h"
+#include "buf/circularbuffer.h"
 #include "silence.h"
 
 s_namespace_2(synergi,engine)

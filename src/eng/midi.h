@@ -8,8 +8,8 @@
 #ifndef MIDI_H_
 #define MIDI_H_
 
-#include <common/ns.h>
-#include <common/types.h>
+#include "common/ns.h"
+#include "common/types.h"
 
 s_namespace_2(synergi,engine)
 

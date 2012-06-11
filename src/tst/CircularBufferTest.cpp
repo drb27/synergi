@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 #include "CircularBufferTest.h"
-#include <buf/circularbuffer.h>
+#include "buf/circularbuffer.h"
 
 using namespace CppUnit;
 

@@ -8,8 +8,8 @@
 #ifndef SILENCE_H_
 #define SILENCE_H_
 
-#include <common/ns.h>
-#include <common/types.h>
+#include "common/ns.h"
+#include "common/types.h"
 #include "oscillator.h"
 
 s_namespace_2(synergi,engine)

@@ -8,8 +8,8 @@
 #include <iostream>
 #include <string>
 
-#include <common/ns.h>
-#include <common/types.h>
+#include "common/ns.h"
+#include "common/types.h"
 #include "CircularBufferTest.h"
 #include "WavetableTest.h"
 

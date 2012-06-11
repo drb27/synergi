@@ -5,8 +5,8 @@
  *      Author: drb
  */
 
-#include <common/ns.h>
-#include <common/types.h>
+#include "common/ns.h"
+#include "common/types.h"
 #include "circularbuffer.h"
 #include <stdlib.h>
 
