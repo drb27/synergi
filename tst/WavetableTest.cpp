@@ -9,10 +9,12 @@
 #include <string>
 #include <stdlib.h>
 
+#include <buf/basic.h>
+#include <eng/midi.h>
 #include "WavetableTest.h"
+#include <osc/wavetable.h>
 #include "osc/oscillator.h"
 #include <malloc.h>
-#include <buf/basic.h>
 
 using namespace CppUnit;
 
@@ -24,7 +26,7 @@ void WavetableTest::new_is_empty()
   using synergi::engine::rawbuffer_t;
   struct mallinfo old = mallinfo();
 
-  synergi::engine::oscillator::wavetable* t = new synergi::engine::oscillator::wavetable;
+  synergi::engine::wavetable* t = new synergi::engine::wavetable;
 
   //allocate a new rawbuffer
   rawbuffer_t* pBuf = new rawbuffer_t(1024);
