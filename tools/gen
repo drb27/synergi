@@ -1,0 +1,4 @@
+#!/bin/bash
+# $1 = prefix (common, osc, buf, etc)
+# $2 = -i for in place
+grep "#include <$1" -rl * | grep "\(\.cpp\)\|\(\.h\)" |xargs sed $2 "s/#include <$1\/\(.*\)>/#include \"$1\/\1\"/g"
