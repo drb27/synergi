@@ -1,1 +1,1 @@
-SOURCES= buf/circularbuffer.cpp osc/puresine.cpp osc/silence.cpp osc/oscillator.cpp main.cpp tst/WavetableTest.cpp tst/CircularBufferTest.cpp tst/main.cpp 
+SOURCES= src/buf/circularbuffer.cpp src/osc/puresine.cpp src/osc/oscillator.cpp src/osc/silence.cpp src/tst/WavetableTest.cpp src/tst/CircularBufferTest.cpp src/tst/main.cpp src/main.cpp 

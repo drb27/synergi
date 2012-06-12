@@ -5,8 +5,8 @@
  *      Author: drb
  */
 
-#include "types.h"
-#include "ns.h"
+#include "common/types.h"
+#include "common/ns.h"
 #include "oscillator.h"
 
 s_namespace_2(synergi,engine)

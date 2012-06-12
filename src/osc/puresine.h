@@ -10,6 +10,8 @@
 
 #include "oscillator.h"
 
+// Hi
+
 namespace synergi {
 namespace engine {
 
