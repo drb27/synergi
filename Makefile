@@ -1,5 +1,11 @@
 ROOT=$(PWD)
 export ROOT
+
+sources.d:
+	tools/enumeratesources
+
+include sources.d
+
 COMMON=$(ROOT)/common/ns.h $(ROOT)/common/types.h $(ROOT)/eng/midi.h
 CFLAGS=-I. -I$(ROOT)/common -I$(ROOT) -ggdb
 TESTDEPS=tst/main.cpp tst/CircularBufferTest.cpp tst/CircularBufferTest.h tst/WavetableTest.cpp tst/WavetableTest.h

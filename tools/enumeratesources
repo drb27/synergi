@@ -1,0 +1,3 @@
+#!/bin/bash
+if [ -s sources.d ]; then rm sources.d; fi  
+find * -name "*.cpp" -print | sed 's/^src\///g' | sed '1i\\SOURCES=' |awk '{printf "%s ", $0}' >> sources.d
