@@ -30,14 +30,14 @@ public:
 	WavetableTest() {}
 	virtual ~WavetableTest() {}
 
-	virtual void new_is_empty();
+	virtual void mem_dispose();
 	virtual void contains_empty();
 	virtual void contains_wrong();
 	virtual void contains_right_solo();
 	virtual void contains_right_multi();
 
 	CPPUNIT_TEST_SUITE( WavetableTest );
-	CPPUNIT_TEST( new_is_empty );
+	CPPUNIT_TEST( mem_dispose );
 	CPPUNIT_TEST( contains_empty );
 	CPPUNIT_TEST( contains_wrong );
 	CPPUNIT_TEST( contains_right_solo );

@@ -58,21 +58,55 @@ void WavetableTest::contains_wrong()
 	  // Dispose
 	  delete t;
 
-	CPPUNIT_ASSERT(false);
 }
 
 void WavetableTest::contains_right_solo()
 {
-	CPPUNIT_ASSERT(false);
+	  using synergi::engine::rawbuffer_t;
+	  using synergi::engine::wavetable;
+	  using synergi::engine::midi::note_t;
+
+	  const note_t testNote = 0xAD;
+
+	  //allocate a new wavetable and rawbuffer
+	  wavetable* t = new wavetable;
+	  rawbuffer_t* pBuf = new rawbuffer_t(1024);
+
+	  t->add(testNote,*pBuf);
+
+	  CPPUNIT_ASSERT( t->contains(testNote) );
+
+	  // Dispose
+	  delete t;
 }
 
 void WavetableTest::contains_right_multi()
 {
-	CPPUNIT_ASSERT(false);
+	  using synergi::engine::rawbuffer_t;
+	  using synergi::engine::wavetable;
+	  using synergi::engine::midi::note_t;
+
+	  const note_t alternativeNote = 0xBA;
+	  const note_t testNote = 0xAD;
+
+	  //allocate a new wavetable and rawbuffer
+	  wavetable* t = new wavetable;
+	  rawbuffer_t* pBuf = new rawbuffer_t(1024);
+	  rawbuffer_t* pBuf2 = new rawbuffer_t(1024);
+
+	  t->add(alternativeNote,*pBuf);
+	  t->add(testNote,*pBuf2);
+
+	  CPPUNIT_ASSERT( t->contains(testNote) );
+	  CPPUNIT_ASSERT( t->contains(alternativeNote) );
+
+	  // Dispose
+	  delete t;
+
 }
 
 
-void WavetableTest::new_is_empty()
+void WavetableTest::mem_dispose()
 {
   using synergi::engine::rawbuffer_t;
   struct mallinfo old = mallinfo();

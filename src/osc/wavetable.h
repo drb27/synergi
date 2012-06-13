@@ -26,7 +26,7 @@ public:
 
 	virtual void add(midi::note_t note, const rawbuffer_t& buf);
 
-	bool contains (midi::note_t note) const;
+	bool contains(midi::note_t note) const;
 };
 
 
