@@ -105,7 +105,6 @@ void WavetableTest::contains_right_multi()
 
 }
 
-
 void WavetableTest::mem_dispose()
 {
   using synergi::engine::rawbuffer_t;
@@ -125,6 +124,69 @@ void WavetableTest::mem_dispose()
   struct mallinfo now = mallinfo();
   CPPUNIT_ASSERT_EQUAL(old.uordblks,now.uordblks);
 
+}
+
+void WavetableTest::lookup_empty()
+{
+	  using synergi::engine::rawbuffer_t;
+	  using synergi::engine::wavetable;
+	  using synergi::engine::midi::note_t;
+
+	  const note_t testNote = 0xAD;
+
+	  // Allocate a wavetable
+	  wavetable* t = new wavetable;
+
+	  CPPUNIT_ASSERT( t->lookup(testNote)==NULL );
+
+	  // Dispose
+	  delete t;
+
+}
+
+void WavetableTest::lookup_present()
+{
+	  using synergi::engine::rawbuffer_t;
+	  using synergi::engine::wavetable;
+	  using synergi::engine::midi::note_t;
+
+	  const note_t alternativeNote = 0xBA;
+	  const note_t testNote = 0xAD;
+
+	  //allocate a new wavetable and rawbuffer
+	  wavetable* t = new wavetable;
+	  rawbuffer_t* pBuf = new rawbuffer_t(1024);
+	  rawbuffer_t* pBuf2 = new rawbuffer_t(1024);
+
+	  t->add(alternativeNote,*pBuf);
+	  t->add(testNote,*pBuf2);
+
+	  CPPUNIT_ASSERT( t->lookup(alternativeNote)==pBuf );
+	  CPPUNIT_ASSERT( t->lookup(testNote)==pBuf2 );
+
+	  // Dispose
+	  delete t;
+}
+
+void WavetableTest::lookup_notpresent()
+{
+	  using synergi::engine::rawbuffer_t;
+	  using synergi::engine::wavetable;
+	  using synergi::engine::midi::note_t;
+
+	  const note_t alternativeNote = 0xBA;
+	  const note_t testNote = 0xAD;
+
+	  //allocate a new wavetable and rawbuffer
+	  wavetable* t = new wavetable;
+	  rawbuffer_t* pBuf = new rawbuffer_t(1024);
+
+	  t->add(testNote,*pBuf);
+
+	  CPPUNIT_ASSERT( t->lookup(alternativeNote)==NULL );
+
+	  // Dispose
+	  delete t;
 }
 
 }

@@ -35,6 +35,9 @@ public:
 	virtual void contains_wrong();
 	virtual void contains_right_solo();
 	virtual void contains_right_multi();
+	virtual void lookup_empty();
+	virtual void lookup_notpresent();
+	virtual void lookup_present();
 
 	CPPUNIT_TEST_SUITE( WavetableTest );
 	CPPUNIT_TEST( mem_dispose );
@@ -42,6 +45,9 @@ public:
 	CPPUNIT_TEST( contains_wrong );
 	CPPUNIT_TEST( contains_right_solo );
 	CPPUNIT_TEST( contains_right_multi );
+	CPPUNIT_TEST( lookup_empty );
+	CPPUNIT_TEST( lookup_notpresent );
+	CPPUNIT_TEST( lookup_present);
 	CPPUNIT_TEST_SUITE_END();
 };
 

@@ -32,12 +32,22 @@ void wavetable::add(midi::note_t note, const rawbuffer_t& buf)
 		delete pBuf;
 		erase(note);
 	}
-	(*this)[note] = &buf;
+	mapped_type& mt = parent::operator[](note);
+	mt = &buf;
 }
 
 bool wavetable::contains(midi::note_t note) const
 {
 	return (find(note)!=end());
+}
+
+const rawbuffer_t* wavetable::lookup(midi::note_t note)
+{
+	if (contains(note))
+		return (*this)[note];
+
+	else
+		return NULL;
 }
 
 } /* namespace engine */
