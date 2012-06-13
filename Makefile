@@ -7,6 +7,7 @@ SYNERGI_OBJS=src/main.o src/osc/wavetable.o src/osc/oscillator.o src/osc/puresin
 TEST_MODULES=$(wildcard src/tst/*.cpp)
 TEST_OBJS=$(TEST_MODULES:.cpp=.o)
 TEST_TARGETS=src/buf/circularbuffer.o src/osc/wavetable.o
+
 sources.d:
 	tools/enumeratesources
 
