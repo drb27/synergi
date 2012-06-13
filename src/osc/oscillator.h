@@ -15,6 +15,7 @@
 #include <map>
 #include "eng/midi.h"
 #include <iostream>
+#include <osc/wavetable.h>
 
 namespace synergi
 {
@@ -28,7 +29,6 @@ s_namespace_2(synergi,engine)
 
 class oscillator
 {
-	friend class synergi::test::WavetableTest;
 
 public:
 
@@ -49,39 +49,6 @@ public:
 
 	protected:
 
-	class wavetable : protected std::map<midi::note_t,const rawbuffer_t*>
-	{
-	protected:
-		typedef std::map<midi::note_t,const rawbuffer_t*> parent;
-
-	public:
-		virtual void clear()
-		{
-
-			// Free all buffers
-			for ( parent::iterator i = begin(); i!=end(); i++)
-			{
-				delete (*i).second;
-			}
-			parent::clear();
-		}
-
-		virtual ~wavetable()
-		{
-			clear();
-		}
-
-		virtual void add(midi::note_t note, const rawbuffer_t& buf)
-		{
-			if (find(note)!=end())
-			{
-				const rawbuffer_t* pBuf = (*find(note)).second;
-				delete pBuf;
-				erase(note);
-			}
-			(*this)[note] = &buf;
-		}
-	};
 
 	protected:
 	wavetable waveTable;

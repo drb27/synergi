@@ -3,10 +3,11 @@ export ROOT
 CXX=g++
 CXXFLAGS=-I./src -I/usr/include/cppunit -ggdb
 LIBS=-lasound
-SYNERGI_OBJS=src/main.o src/osc/oscillator.o src/osc/puresine.o src/buf/circularbuffer.o src/osc/silence.o
+SYNERGI_OBJS=src/main.o src/osc/wavetable.o src/osc/oscillator.o src/osc/puresine.o src/buf/circularbuffer.o src/osc/silence.o
 TEST_MODULES=$(wildcard src/tst/*.cpp)
 TEST_OBJS=$(TEST_MODULES:.cpp=.o)
-TEST_TARGETS=src/buf/circularbuffer.o
+TEST_TARGETS=src/buf/circularbuffer.o src/osc/wavetable.o
+
 sources.d:
 	tools/enumeratesources
 
