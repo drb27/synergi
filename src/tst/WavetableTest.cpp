@@ -23,6 +23,55 @@ using namespace CppUnit;
 namespace synergi {
 namespace test {
 
+void WavetableTest::contains_empty()
+{
+	  using synergi::engine::wavetable;
+	  using synergi::engine::midi::note_t;
+
+	  //allocate a new wavetable and rawbuffer
+	  wavetable* t = new wavetable;
+
+	  // Make sure it doesn't contain any midi note
+	  for ( uint16_t n = 0 ; n <= 255; CPPUNIT_ASSERT(!t->contains((note_t)(n++))) );
+
+	  // Dispose
+	  delete t;
+}
+
+void WavetableTest::contains_wrong()
+{
+	  using synergi::engine::rawbuffer_t;
+	  using synergi::engine::wavetable;
+	  using synergi::engine::midi::note_t;
+
+	  const note_t wrongNote = 0xBA;
+	  const note_t testNote = 0xAD;
+
+	  //allocate a new wavetable and rawbuffer
+	  wavetable* t = new wavetable;
+	  rawbuffer_t* pBuf = new rawbuffer_t(1024);
+
+	  t->add(wrongNote,*pBuf);
+
+	  CPPUNIT_ASSERT( !t->contains(testNote) );
+
+	  // Dispose
+	  delete t;
+
+	CPPUNIT_ASSERT(false);
+}
+
+void WavetableTest::contains_right_solo()
+{
+	CPPUNIT_ASSERT(false);
+}
+
+void WavetableTest::contains_right_multi()
+{
+	CPPUNIT_ASSERT(false);
+}
+
+
 void WavetableTest::new_is_empty()
 {
   using synergi::engine::rawbuffer_t;

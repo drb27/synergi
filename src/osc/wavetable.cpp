@@ -35,5 +35,10 @@ void wavetable::add(midi::note_t note, const rawbuffer_t& buf)
 	(*this)[note] = &buf;
 }
 
+bool wavetable::contains(midi::note_t note) const
+{
+	return (find(note)!=end());
+}
+
 } /* namespace engine */
 } /* namespace synergi */
