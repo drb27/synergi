@@ -1,4 +1,4 @@
-x/*
+/*
  * CircularBufferTest.cpp
  *
  *  Created on: Jun 2, 2012
@@ -7,15 +7,15 @@ x/*
 
 #include <iostream>
 #include <string>
+#include <map>
 #include <stdlib.h>
 
-#include <buf/basic.h>
-#include <eng/midi.h>
+#include "buf/basic.h"
+#include "eng/midi.h"
 #include "WavetableTest.h"
-#include <osc/wavetable.h>
+#include "osc/wavetable.h"
 #include "osc/oscillator.h"
 #include <malloc.h>
-#include "buf/basic.h"
 
 using namespace CppUnit;
 

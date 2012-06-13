@@ -5,8 +5,8 @@
  *      Author: drb
  */
 
-#include <buf/basic.h>
-#include <eng/midi.h>
+#include "buf/basic.h"
+#include "eng/midi.h"
 #include <map>
 #include "wavetable.h"
 
