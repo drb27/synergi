@@ -5,6 +5,7 @@
  *      Author: drb
  */
 
+#include "buf/basic.h"
 #include "source.h"
 
 namespace synergi
@@ -21,6 +22,13 @@ source::source()
 source::~source()
 {
 	// TODO Auto-generated destructor stub
+}
+
+rawbuffer_t* source::pull(uint32_t sampleCount)
+{
+	rawbuffer_t* pBuf = new rawbuffer_t(sampleCount);
+	populate(pBuf);
+	return pBuf;
 }
 
 } /* namespace engine */

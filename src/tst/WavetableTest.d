@@ -6,4 +6,5 @@ src/tst/WavetableTest.d src/tst/WavetableTest.o: \
  /usr/include/cppunit/extensions/TestFactoryRegistry.h \
  /usr/include/cppunit/ui/text/TextTestRunner.h \
  /usr/include/cppunit/extensions/HelperMacros.h src/osc/wavetable.h \
- src/osc/oscillator.h src/buf/circularbuffer.h src/buf/basic.h
+ src/osc/oscillator.h src/buf/circularbuffer.h src/buf/basic.h \
+ src/eng/source.h

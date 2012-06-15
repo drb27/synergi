@@ -7,6 +7,7 @@
 
 #include "common/ns.h"
 #include "common/types.h"
+#include "buf/basic.h"
 #include "buf/circularbuffer.h"
 #include "osc/oscillator.h"
 #include "osc/puresine.h"
@@ -19,6 +20,7 @@
 #define RED(X) "\33[0;31m" << X << "\33[0m"
 
 using namespace std;
+using synergi::engine::rawbuffer_t;
 
 /********************************************************************************
  * FN: alsa_init()
@@ -125,22 +127,15 @@ void test_buffer()
 	using synergi::engine::circularbuffer;
 	using synergi::engine::puresine;
 
-	// Create an audio buffer at 44.1kHz and 100 stereo samples long
-	circularbuffer<uint16_t> buffer(44100,8000,circularbuffer<uint16_t>::stereo);
-
 	// Create a sine wave oscillator
 	puresine o;
 
 	std::cout << "Synthesizing ..." << std::endl;
 
 	// Synthesize 40 whole waves
-	o.synthesize(buffer,4000);
+	rawbuffer_t* pBuf = o.pull(16000);
 
 	std::cout << "Extracting ..." << std::endl;
-
-	// Extract to a linear buffer
-	synergi::engine::rawbuffer_t linearBuffer(16000);
-	buffer >> linearBuffer;
 
 	// Output to a CSV
 	/*
@@ -169,11 +164,14 @@ void test_buffer()
 	int frames = periodsize >> 2;
 
 	do {
-	    while ((pcmreturn = snd_pcm_writei(pcm_handle, linearBuffer.buffer, frames)) < 0) {
+	    while ((pcmreturn = snd_pcm_writei(pcm_handle, pBuf->buffer, frames)) < 0) {
 	        snd_pcm_prepare(pcm_handle);
 	        std::cout <<  "<<<<<<<<<<<<<<< Buffer Underrun >>>>>>>>>>>>>>>" << std::endl;
 	    }
 	} while (true);
+
+	// Delete buffer
+	delete pBuf;
 
 	std::cout << "Natural termination" << std::endl;
 }

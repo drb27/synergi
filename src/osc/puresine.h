@@ -20,7 +20,8 @@ public:
 	puresine();
 	virtual ~puresine();
 
-	virtual void synthesize(circularbuffer<uint16_t>&, uint32_t);
+	//virtual void synthesize(circularbuffer<uint16_t>&, uint32_t);
+	virtual void populate(rawbuffer_t* pbuf);
 
 protected:
 	uint32_t phase;

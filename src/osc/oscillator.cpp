@@ -7,6 +7,8 @@
 
 #include "common/types.h"
 #include "common/ns.h"
+#include "buf/basic.h"
+#include "eng/source.h"
 #include "oscillator.h"
 
 s_namespace_2(synergi,engine)
