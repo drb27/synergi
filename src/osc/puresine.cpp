@@ -22,20 +22,23 @@ puresine::~puresine() {
 	// TODO Auto-generated destructor stub
 }
 
-void puresine::synthesize(circularbuffer<uint16_t>& buffer, uint32_t samples)
+void puresine::populate(rawbuffer_t* pBuf)
 {
 	// STUB Generate a 440Hz tone (A)
 	const double amplitude = 8000.0;
 
-	for ( int i = 0 ; i < samples ; i++)
+	uint16_t* pNextSample = (uint16_t*)pBuf->buffer;
+	for ( int i = 0 ; i < pBuf->size ; i++)
 	{
 		double x = (phase++) / (double)samplesPerCycle;
 		double inter = 32000+ (amplitude * sin(2.0*3.142*x));
 		double inter2 = 32000+ (amplitude * sin(2.0*3.142*x));
 		uint16_t sample = (uint16_t)inter;
 		uint16_t sample2 = (uint16_t)inter2;
-		buffer.insert(sample);	// Right channel
-		buffer.insert(sample2); 	// Left channel
+
+		// Insert the samples into the buffer
+		*(pNextSample++) = sample;
+		*(pNextSample++) = sample2;
 
 		if (phase >= samplesPerCycle) phase=0;
 	}

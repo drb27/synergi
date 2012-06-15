@@ -15,7 +15,8 @@
 #include <map>
 #include "eng/midi.h"
 #include <iostream>
-#include <osc/wavetable.h>
+#include "osc/wavetable.h"
+#include "eng/source.h"
 
 namespace synergi
 {
@@ -27,7 +28,7 @@ class WavetableTest;
 
 s_namespace_2(synergi,engine)
 
-class oscillator
+class oscillator : public source
 {
 
 public:
@@ -39,9 +40,6 @@ public:
 	oscillator(double f=440.0, double a=1.0);
 
 	virtual ~oscillator();
-
-	// Fills an audio buffer with the requested number of samples
-	virtual void synthesize(circularbuffer<uint16_t>& buffer, uint32_t samples)=0;
 
 	private:
 	double freq;
