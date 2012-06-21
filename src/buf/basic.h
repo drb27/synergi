@@ -23,9 +23,19 @@ struct rawbuffer_t
 		count=0;
 	}
 
+	virtual byte_t* detach(void)
+	{
+		if(buffer)
+		{
+			free(buffer);
+			buffer=0;
+		}
+	}
+
 	virtual ~rawbuffer_t()
 	{
-	  free(buffer);
+		if (buffer)
+			free(buffer);
 	}
 
 	byte_t* buffer;
