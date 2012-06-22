@@ -28,7 +28,7 @@ void puresine::populate(rawbuffer_t* pBuf)
 	const double amplitude = 8000.0;
 
 	uint16_t* pNextSample = (uint16_t*)pBuf->buffer;
-	for ( int i = 0 ; i < pBuf->size ; i++)
+	for ( int i = 0 ; i < (pBuf->size/4) ; i++)
 	{
 		double x = (phase++) / (double)samplesPerCycle;
 		double inter = 32000+ (amplitude * sin(2.0*3.142*x));
