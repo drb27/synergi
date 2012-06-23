@@ -29,7 +29,7 @@ using synergi::engine::rawbuffer_t;
  *
  * RT: null
  */
-bool alsa_init(snd_pcm_t *pcm_handle, snd_pcm_uframes_t periodsize)
+bool alsa_init(snd_pcm_t **pcm_handle, snd_pcm_uframes_t periodsize)
 {
     snd_pcm_stream_t stream = SND_PCM_STREAM_PLAYBACK;
     snd_pcm_hw_params_t *hwparams;
@@ -38,13 +38,13 @@ bool alsa_init(snd_pcm_t *pcm_handle, snd_pcm_uframes_t periodsize)
 
     snd_pcm_hw_params_alloca(&hwparams);
 
-    if (snd_pcm_open(&pcm_handle,pcm_name,stream,0) < 0)
+    if (snd_pcm_open(pcm_handle,pcm_name,stream,0) < 0)
     {
             std::cout << "Could not open PCM device " << pcm_name << std::endl;
             return false;
     }
 
-    if (snd_pcm_hw_params_any(pcm_handle, hwparams) <0 )
+    if (snd_pcm_hw_params_any(*pcm_handle, hwparams) <0 )
     {
             std::cout << "Could not configure PCM device " << pcm_name << std::endl;
             return false;
@@ -64,13 +64,13 @@ bool alsa_init(snd_pcm_t *pcm_handle, snd_pcm_uframes_t periodsize)
         /* There are also access types for MMAPed */
         /* access, but this is beyond the scope   */
         /* of this introduction.                  */
-        if (snd_pcm_hw_params_set_access(pcm_handle, hwparams, SND_PCM_ACCESS_RW_INTERLEAVED) < 0) {
+        if (snd_pcm_hw_params_set_access(*pcm_handle, hwparams, SND_PCM_ACCESS_RW_INTERLEAVED) < 0) {
           std::cout << "Error setting access" << std::endl;
           return false;
         }
 
         /* Set sample format */
-        if (snd_pcm_hw_params_set_format(pcm_handle, hwparams, SND_PCM_FORMAT_U16_LE) < 0) {
+        if (snd_pcm_hw_params_set_format(*pcm_handle, hwparams, SND_PCM_FORMAT_U16_LE) < 0) {
             std::cout << "Error setting format" << std::endl;
           return false;
         }
@@ -78,7 +78,7 @@ bool alsa_init(snd_pcm_t *pcm_handle, snd_pcm_uframes_t periodsize)
         /* Set sample rate. If the exact rate is not supported */
         /* by the hardware, use nearest possible rate.         */
         exact_rate = rate;
-        if (snd_pcm_hw_params_set_rate_near(pcm_handle, hwparams, &exact_rate, 0) < 0) {
+        if (snd_pcm_hw_params_set_rate_near(*pcm_handle, hwparams, &exact_rate, 0) < 0) {
             std::cout << "Error setting rate" << std::endl;
           return false;
         }
@@ -87,27 +87,27 @@ bool alsa_init(snd_pcm_t *pcm_handle, snd_pcm_uframes_t periodsize)
         }
 
         /* Set number of channels */
-        if (snd_pcm_hw_params_set_channels(pcm_handle, hwparams, 2) < 0) {
+        if (snd_pcm_hw_params_set_channels(*pcm_handle, hwparams, 2) < 0) {
             std::cout << "Error setting channels" << std::endl;
             return false;
         }
 
         /* Set number of periods. Periods used to be called fragments. */
-        if (snd_pcm_hw_params_set_periods(pcm_handle, hwparams, periods, 0) < 0) {
+        if (snd_pcm_hw_params_set_periods(*pcm_handle, hwparams, periods, 0) < 0) {
             std::cout << "Error setting periods" << std::endl;
             return false;
         }
 
         /* Set buffer size (in frames). The resulting latency is given by */
         /* latency = periodsize * periods / (rate * bytes_per_frame)     */
-        if (snd_pcm_hw_params_set_buffer_size(pcm_handle, hwparams, (periodsize * periods)>>2) < 0) {
+        if (snd_pcm_hw_params_set_buffer_size(*pcm_handle, hwparams, (periodsize * periods)>>2) < 0) {
             std::cout << "Error setting buffer size" << std::endl;
             return false;
         }
 
         /* Apply HW parameter settings to */
         /* PCM device and prepare device  */
-        if (snd_pcm_hw_params(pcm_handle, hwparams) < 0) {
+        if (snd_pcm_hw_params(*pcm_handle, hwparams) < 0) {
             std::cout << "Error setting HW params." << std::endl;
             return false;
         }
@@ -153,9 +153,9 @@ void test_buffer()
 	// Play that damn mother!
 	std::cout << "Playing ..." << std::endl;
 
-	snd_pcm_uframes_t periodsize=8000;
+	snd_pcm_uframes_t periodsize=16000;
 	snd_pcm_t *pcm_handle;
-	alsa_init(pcm_handle,periodsize);
+	alsa_init(&pcm_handle,periodsize);
 
 	std::cout << "All good so far!" << std::endl;
 
@@ -163,10 +163,10 @@ void test_buffer()
 	int pcmreturn;
 	int frames = periodsize >> 2;
 
+
 	do {
 	    while ((pcmreturn = snd_pcm_writei(pcm_handle, pBuf->buffer, frames)) < 0) {
 	        snd_pcm_prepare(pcm_handle);
-	        std::cout <<  "<<<<<<<<<<<<<<< Buffer Underrun >>>>>>>>>>>>>>>" << std::endl;
 	    }
 	} while (true);
 
