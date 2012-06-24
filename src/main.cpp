@@ -139,7 +139,8 @@ void test_buffer()
 
 	// Output to a CSV
 
-	/*std::ofstream f;
+#ifdef DUMP
+	std::ofstream f;
 	f.open("output.csv");
 
 	for ( uint16_t* ptr = (uint16_t*)pBuf->buffer; ptr < (uint16_t*)((pBuf->buffer)+4000); ptr+=2)
@@ -147,8 +148,8 @@ void test_buffer()
 		f << *ptr << "," << *(ptr+1) << std::endl;
 	}
 
-	f.close();*/
-
+	f.close();
+#endif
 
 	// Play that damn mother!
 	std::cout << "Playing ..." << std::endl;
