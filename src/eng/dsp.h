@@ -13,6 +13,8 @@ namespace synergi
 namespace engine
 {
 
+extern const double PI;
+
 class dsp
 {
 public:

@@ -5,6 +5,7 @@
  *      Author: drb
  */
 
+#include "eng/dsp.h"
 #include "puresine.h"
 #include <math.h>
 #include <iostream>
@@ -12,7 +13,7 @@
 namespace synergi {
 namespace engine {
 
-puresine::puresine() :sampleRate(44100), phase(0), samplesPerCycle(100)
+puresine::puresine() :sampleRate(44100), phase(0.0), frequency(440.0)
 {
 	// TODO Auto-generated constructor stub
 
@@ -30,9 +31,9 @@ void puresine::populate(rawbuffer_t* pBuf)
 	uint16_t* pNextSample = (uint16_t*)pBuf->buffer;
 	for ( int i = 0 ; i < (pBuf->size/4) ; i++)
 	{
-		double x = (phase++) / (double)samplesPerCycle;
-		double inter = 32000+ (amplitude * sin(2.0*3.142*x));
-		double inter2 = 32000+ (amplitude * sin(2.0*3.142*x));
+		phase+=2*PI*(1.0/(double)sampleRate);
+		double inter = 32000+ (amplitude * sin(frequency*phase));
+		double inter2 = inter;
 		uint16_t sample = (uint16_t)inter;
 		uint16_t sample2 = (uint16_t)inter2;
 
@@ -40,7 +41,7 @@ void puresine::populate(rawbuffer_t* pBuf)
 		*(pNextSample++) = sample;
 		*(pNextSample++) = sample2;
 
-		if (phase >= samplesPerCycle) phase=0;
+		if (phase >= PI*2.0) phase=0;
 	}
 
 }

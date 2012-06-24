@@ -138,22 +138,22 @@ void test_buffer()
 	std::cout << "Extracting ..." << std::endl;
 
 	// Output to a CSV
-	/*
-	std::ofstream f;
+
+	/*std::ofstream f;
 	f.open("output.csv");
 
-	for ( uint16_t* ptr = (uint16_t*)linearBuffer.buffer; ptr < (ptr+400); ptr+=2)
+	for ( uint16_t* ptr = (uint16_t*)pBuf->buffer; ptr < (uint16_t*)((pBuf->buffer)+4000); ptr+=2)
 	{
 		f << *ptr << "," << *(ptr+1) << std::endl;
 	}
 
-	f.close();
-	*/
+	f.close();*/
+
 
 	// Play that damn mother!
 	std::cout << "Playing ..." << std::endl;
 
-	snd_pcm_uframes_t periodsize=16000;
+	snd_pcm_uframes_t periodsize=4000;
 	snd_pcm_t *pcm_handle;
 	alsa_init(&pcm_handle,periodsize);
 

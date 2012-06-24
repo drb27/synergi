@@ -24,9 +24,9 @@ public:
 	virtual void populate(rawbuffer_t* pbuf);
 
 protected:
-	uint32_t phase;
+	double phase;
 	const uint32_t sampleRate;
-	const uint32_t samplesPerCycle;
+	const double frequency;
 };
 
 } /* namespace engine */

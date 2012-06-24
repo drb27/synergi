@@ -5,12 +5,15 @@
  *      Author: drb
  */
 
+#include <math.h>
 #include "dsp.h"
 
 namespace synergi
 {
 namespace engine
 {
+
+const double PI = 4.0*atan(1.0);
 
 dsp::dsp()
 {
