@@ -1,1 +1,2 @@
-src/eng/outlet.d src/eng/outlet.o: src/eng/outlet.cpp src/eng/outlet.h
+src/eng/outlet.d src/eng/outlet.o: src/eng/outlet.cpp src/buf/basic.h \
+ src/common/types.h src/common/ns.h src/eng/outlet.h

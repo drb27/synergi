@@ -5,6 +5,7 @@
  *      Author: drb
  */
 
+#include "buf/basic.h"
 #include "outlet.h"
 
 namespace synergi {
@@ -17,6 +18,13 @@ outlet::outlet() {
 
 outlet::~outlet() {
 	// TODO Auto-generated destructor stub
+}
+
+rawbuffer_t* outlet::pull(uint32_t sampleCount)
+{
+	rawbuffer_t* pBuf = new rawbuffer_t(sampleCount);
+	populate(pBuf);
+	return pBuf;
 }
 
 } /* namespace engine */
