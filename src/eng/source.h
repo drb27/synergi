@@ -25,6 +25,8 @@ public:
 	source();
 	virtual ~source();
 
+	virtual rawbuffer_t* get_src_buffer(uint32_t sampleCount);
+
 };
 
 } /* namespace engine */

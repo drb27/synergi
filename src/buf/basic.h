@@ -12,6 +12,8 @@
 #include "common/ns.h"
 #include <stdlib.h>
 
+#include <memory.h>
+
 s_namespace_2(synergi,engine)
 
 struct rawbuffer_t
@@ -21,6 +23,17 @@ struct rawbuffer_t
 		buffer=(byte_t*)calloc(sz,1);
 		size=sz;
 		count=0;
+	}
+
+	rawbuffer_t(const rawbuffer_t& other)
+	{
+		// Set up an identical buffer
+		buffer=(byte_t*)malloc(other.size);
+		size=other.size;
+		count = other.count;
+
+		// Copy the contents
+		memcpy(buffer,other.buffer,size);
 	}
 
 	virtual byte_t* detach(void)

@@ -20,13 +20,16 @@ namespace engine
 
 extern const double PI;
 
-class dsp : public inlet, outlet
+class dsp : public inlet, public outlet
 {
 public:
 	dsp();
 	virtual ~dsp();
 protected:
 	virtual void populate(rawbuffer_t* pBuf);
+	virtual rawbuffer_t* get_src_buffer(uint32_t sampleCount);
+	virtual void transform(const rawbuffer_t& pSrc, rawbuffer_t* pDest)=0;
+
 };
 
 } /* namespace engine */

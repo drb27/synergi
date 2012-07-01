@@ -27,10 +27,11 @@ public:
 	///		The number of samples requested per channel
 	/// @return
 	///		Always returns a rawbuffer_t, which contains UP TO the requested number of samples.
-	rawbuffer_t* pull(uint32_t sampleCount);
+	virtual rawbuffer_t* pull(uint32_t sampleCount);
 
 protected:
 	virtual void populate(rawbuffer_t* pBuf)=0;
+	virtual rawbuffer_t* get_src_buffer(uint32_t sampleCount)=0;
 };
 
 } /* namespace engine */

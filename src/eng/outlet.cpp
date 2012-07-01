@@ -23,7 +23,7 @@ outlet::~outlet() {
 
 rawbuffer_t* outlet::pull(uint32_t sampleCount)
 {
-	rawbuffer_t* pBuf = new rawbuffer_t(sampleCount);
+	rawbuffer_t* pBuf = get_src_buffer(sampleCount);
 	populate(pBuf);
 	return pBuf;
 }

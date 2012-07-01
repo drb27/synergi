@@ -24,6 +24,11 @@ source::~source()
 	// TODO Auto-generated destructor stub
 }
 
+rawbuffer_t* source::get_src_buffer(uint32_t sampleCount)
+{
+	// A source generates new buffers (overriding behaviour in outlet)
+	return new rawbuffer_t(sampleCount);
+}
 
 } /* namespace engine */
 } /* namespace synergi */
