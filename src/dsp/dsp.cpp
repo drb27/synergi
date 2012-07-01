@@ -28,8 +28,14 @@ dsp::~dsp()
 
 rawbuffer_t* dsp::get_src_buffer(uint32_t sampleCount)
 {
-	// get from the upstream component
-	return get_src()->pull(sampleCount);
+	outlet* producer = get_src();
+
+	if (producer)
+	{
+		// get from the upstream component
+		return get_src()->pull(sampleCount);
+	}
+	else throw engine::brokenchain();
 }
 
 void dsp::populate(rawbuffer_t* pBuf)

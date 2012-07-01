@@ -8,12 +8,18 @@
 #ifndef INLET_H_
 #define INLET_H_
 
+#include <exception>
 #include "component.h"
 
 namespace synergi {
 namespace engine {
 
 class outlet;
+
+class brokenchain : public std::exception
+{
+
+};
 
 class inlet : public virtual component
 {
