@@ -8,6 +8,10 @@
 #ifndef DSP_H_
 #define DSP_H_
 
+#include "buf/basic.h"
+#include "inlet.h"
+#include "outlet.h"
+
 namespace synergi
 {
 namespace engine
@@ -15,7 +19,7 @@ namespace engine
 
 extern const double PI;
 
-class dsp
+class dsp : public inlet, outlet
 {
 public:
 	dsp();

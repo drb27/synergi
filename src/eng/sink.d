@@ -1,1 +1,2 @@
-src/eng/sink.d src/eng/sink.o: src/eng/sink.cpp src/eng/sink.h
+src/eng/sink.d src/eng/sink.o: src/eng/sink.cpp src/eng/sink.h \
+ src/eng/inlet.h
