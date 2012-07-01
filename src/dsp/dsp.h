@@ -13,12 +13,13 @@
 
 namespace synergi
 {
-namespace engine
+namespace dsp
 {
 
+using engine::rawbuffer_t;
 extern const double PI;
 
-class dsp : public inlet, public outlet
+class dsp : public engine::inlet, public engine::outlet
 {
 public:
 	dsp();
@@ -26,7 +27,7 @@ public:
 protected:
 	virtual void populate(rawbuffer_t* pBuf);
 	virtual rawbuffer_t* get_src_buffer(uint32_t sampleCount);
-	virtual void transform(const rawbuffer_t& pSrc, rawbuffer_t* pDest)=0;
+	virtual void transform(const rawbuffer_t& pSrc, rawbuffer_t* pDest) const =0;
 
 };
 

@@ -13,6 +13,8 @@
 namespace synergi {
 namespace engine {
 
+using dsp::PI;
+
 puresine::puresine() :sampleRate(44100), phase(0.0), frequency(440.0)
 {
 	// TODO Auto-generated constructor stub

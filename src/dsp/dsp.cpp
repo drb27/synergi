@@ -10,7 +10,7 @@
 
 namespace synergi
 {
-namespace engine
+namespace dsp
 {
 
 const double PI = 4.0*atan(1.0);
