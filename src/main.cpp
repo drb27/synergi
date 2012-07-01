@@ -142,13 +142,6 @@ void test_buffer()
 	u.set_name("Unity Gain Block");
 	std::cout << "The name of the DSP Block is " << u.get_name() << std::endl;
 
-	std::cout << "Synthesizing ..." << std::endl;
-
-	// Synthesize 40 whole waves
-	rawbuffer_t* pBuf = u.pull(16000);
-
-	std::cout << "Extracting ..." << std::endl;
-
 	// Output to a CSV
 
 #ifdef DUMP
@@ -178,13 +171,16 @@ void test_buffer()
 
 
 	do {
-	    while ((pcmreturn = snd_pcm_writei(pcm_handle, pBuf->buffer, frames)) < 0) {
+		rawbuffer_t* pBuf = u.pull(periodsize);
+	    while ((pcmreturn = snd_pcm_writei(pcm_handle, pBuf->buffer, frames)) < 0)
+	    {
 	        snd_pcm_prepare(pcm_handle);
 	    }
+
+	    delete pBuf;
+
 	} while (true);
 
-	// Delete buffer
-	delete pBuf;
 
 	std::cout << "Natural termination" << std::endl;
 }
