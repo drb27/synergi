@@ -5,6 +5,7 @@
  *      Author: drb
  */
 
+#include "common/types.h"
 #include "sink.h"
 
 namespace synergi

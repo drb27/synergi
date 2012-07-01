@@ -11,7 +11,10 @@
 namespace synergi {
 namespace engine {
 
-class outlet {
+#include "component.h"
+
+class outlet : public component
+{
 public:
 	outlet();
 	virtual ~outlet();

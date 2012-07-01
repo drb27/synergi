@@ -11,11 +11,17 @@
 namespace synergi {
 namespace engine {
 
-class inlet {
+class outlet;
+
+class inlet : public component
+{
 public:
+
 protected:
-	inlet();
+	inlet(outlet* sourceOutlet = NULL);
+	inline outlet* get_src() const { return datasource; }
 private:
+	outlet* datasource;
 
 };
 

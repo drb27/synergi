@@ -6,6 +6,7 @@
  */
 
 #include "buf/basic.h"
+#include "component.h"
 #include "outlet.h"
 
 namespace synergi {

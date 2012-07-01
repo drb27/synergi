@@ -16,6 +16,8 @@
 #include <alsa/asoundlib.h>
 #include <fstream>
 
+#include "eng/eng.h"
+
 #define GREEN(X) "\33[32;40m" << X << "\33[0m"
 #define RED(X) "\33[0;31m" << X << "\33[0m"
 
@@ -129,6 +131,8 @@ void test_buffer()
 
 	// Create a sine wave oscillator
 	puresine o;
+	o.set_name("Sine Wave Generator");
+	std::cout << "The name of the oscillator is " << o.get_name() << std::endl;
 
 	std::cout << "Synthesizing ..." << std::endl;
 

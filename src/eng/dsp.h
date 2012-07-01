@@ -9,6 +9,7 @@
 #define DSP_H_
 
 #include "buf/basic.h"
+#include "component.h"
 #include "inlet.h"
 #include "outlet.h"
 
@@ -24,6 +25,8 @@ class dsp : public inlet, outlet
 public:
 	dsp();
 	virtual ~dsp();
+protected:
+	virtual void populate(rawbuffer_t* pBuf);
 };
 
 } /* namespace engine */

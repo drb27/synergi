@@ -26,5 +26,10 @@ dsp::~dsp()
 	// TODO Auto-generated destructor stub
 }
 
+void dsp::populate(rawbuffer_t* pBuf)
+{
+
+}
+
 } /* namespace engine */
 } /* namespace synergi */

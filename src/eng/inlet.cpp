@@ -5,14 +5,16 @@
  *      Author: drb
  */
 
+#include "common/types.h"
+#include "component.h"
 #include "inlet.h"
 
 namespace synergi {
 namespace engine {
 
-inlet::inlet() {
-	// TODO Auto-generated constructor stub
-
+inlet::inlet(outlet* parentSource)
+{
+	datasource = parentSource;
 }
 
 } /* namespace engine */

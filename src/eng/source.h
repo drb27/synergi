@@ -8,6 +8,7 @@
 #ifndef SOURCE_H_
 #define SOURCE_H_
 
+#include "component.h"
 #include "outlet.h"
 
 namespace synergi
