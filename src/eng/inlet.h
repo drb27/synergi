@@ -8,12 +8,14 @@
 #ifndef INLET_H_
 #define INLET_H_
 
+#include "component.h"
+
 namespace synergi {
 namespace engine {
 
 class outlet;
 
-class inlet
+class inlet : public virtual component
 {
 public:
 

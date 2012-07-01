@@ -15,7 +15,7 @@ namespace dsp
 
 const double PI = 4.0*atan(1.0);
 
-dsp::dsp(outlet& srcOutlet) : inlet(&srcOutlet)
+dsp::dsp(outlet& srcOutlet) : component(), inlet(&srcOutlet)
 {
 	// TODO Auto-generated constructor stub
 

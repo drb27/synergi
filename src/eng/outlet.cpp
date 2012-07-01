@@ -12,7 +12,8 @@
 namespace synergi {
 namespace engine {
 
-outlet::outlet() {
+outlet::outlet() : component()
+{
 	// TODO Auto-generated constructor stub
 
 }

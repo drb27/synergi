@@ -6,6 +6,7 @@
  */
 
 #include "common/types.h"
+#include "component.h"
 #include "sink.h"
 
 namespace synergi
@@ -13,7 +14,7 @@ namespace synergi
 namespace engine
 {
 
-sink::sink()
+sink::sink() : component()
 {
 	// TODO Auto-generated constructor stub
 

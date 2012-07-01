@@ -6,6 +6,7 @@
  */
 
 #include "buf/basic.h"
+#include "component.h"
 #include "source.h"
 
 namespace synergi
@@ -13,7 +14,7 @@ namespace synergi
 namespace engine
 {
 
-source::source()
+source::source() : component()
 {
 	// TODO Auto-generated constructor stub
 

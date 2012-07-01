@@ -12,7 +12,7 @@
 namespace synergi {
 namespace engine {
 
-inlet::inlet(outlet* parentSource)
+inlet::inlet(outlet* parentSource) : component()
 {
 	datasource = parentSource;
 }

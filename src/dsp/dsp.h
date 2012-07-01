@@ -22,7 +22,7 @@ using engine::outlet;
 
 extern const double PI;
 
-class dsp : public inlet, public outlet, public engine::component
+class dsp : public inlet, public outlet
 {
 public:
 	dsp(outlet& sourceOutlet );

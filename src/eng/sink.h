@@ -16,7 +16,7 @@ namespace synergi
 namespace engine
 {
 
-class sink : public inlet, public component
+class sink : public inlet
 {
 public:
 	sink();
