@@ -17,12 +17,15 @@ namespace dsp
 {
 
 using engine::rawbuffer_t;
+using engine::inlet;
+using engine::outlet;
+
 extern const double PI;
 
-class dsp : public engine::inlet, public engine::outlet
+class dsp : public inlet, public outlet, public engine::component
 {
 public:
-	dsp();
+	dsp(outlet& sourceOutlet );
 	virtual ~dsp();
 protected:
 	virtual void populate(rawbuffer_t* pBuf);

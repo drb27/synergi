@@ -19,7 +19,7 @@ namespace engine
 /**
  * Acts as a multi-channel source of samples for a DSP chain.
  */
-class source : public outlet
+class source : public outlet, public component
 {
 public:
 	source();

@@ -13,7 +13,7 @@ namespace engine {
 
 #include "component.h"
 
-class outlet : public component
+class outlet
 {
 public:
 	outlet();

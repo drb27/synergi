@@ -16,7 +16,7 @@ namespace dsp {
 class unitygain: public dsp
 {
 public:
-	unitygain();
+	unitygain(engine::outlet& srcOutlet);
 	virtual ~unitygain();
 
 	virtual void transform(const rawbuffer_t& pSrc, rawbuffer_t* pDest) const;

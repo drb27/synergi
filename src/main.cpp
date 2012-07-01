@@ -8,6 +8,7 @@
 #include "common/ns.h"
 #include "common/types.h"
 #include "buf/basic.h"
+#include "eng/eng.h"
 #include "buf/circularbuffer.h"
 #include "osc/oscillator.h"
 #include "osc/puresine.h"
@@ -16,7 +17,8 @@
 #include <alsa/asoundlib.h>
 #include <fstream>
 
-#include "eng/eng.h"
+#include "dsp/dsp.h"
+#include "dsp/unitygain.h"
 
 #define GREEN(X) "\33[32;40m" << X << "\33[0m"
 #define RED(X) "\33[0;31m" << X << "\33[0m"
@@ -128,16 +130,22 @@ void test_buffer()
 {
 	using synergi::engine::circularbuffer;
 	using synergi::engine::puresine;
+	using synergi::dsp::unitygain;
 
 	// Create a sine wave oscillator
 	puresine o;
 	o.set_name("Sine Wave Generator");
 	std::cout << "The name of the oscillator is " << o.get_name() << std::endl;
 
+	// Create a unity gain DSP block, ahead of the oscillator
+	unitygain u(o);
+	u.set_name("Unity Gain Block");
+	std::cout << "The name of the DSP Block is " << u.get_name() << std::endl;
+
 	std::cout << "Synthesizing ..." << std::endl;
 
 	// Synthesize 40 whole waves
-	rawbuffer_t* pBuf = o.pull(16000);
+	rawbuffer_t* pBuf = u.pull(16000);
 
 	std::cout << "Extracting ..." << std::endl;
 

@@ -13,7 +13,7 @@ namespace engine {
 
 class outlet;
 
-class inlet : public component
+class inlet
 {
 public:
 

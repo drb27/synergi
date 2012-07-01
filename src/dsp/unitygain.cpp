@@ -10,7 +10,8 @@
 namespace synergi {
 namespace dsp {
 
-unitygain::unitygain() {
+unitygain::unitygain(engine::outlet& srcOutlet) : dsp(srcOutlet)
+{
 	// TODO Auto-generated constructor stub
 
 }
