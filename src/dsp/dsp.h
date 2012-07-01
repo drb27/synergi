@@ -9,9 +9,7 @@
 #define DSP_H_
 
 #include "buf/basic.h"
-#include "component.h"
-#include "inlet.h"
-#include "outlet.h"
+#include "eng/eng.h"
 
 namespace synergi
 {

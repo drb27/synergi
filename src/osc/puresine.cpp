@@ -5,7 +5,7 @@
  *      Author: drb
  */
 
-#include "eng/dsp.h"
+#include "dsp/dsp.h"
 #include "puresine.h"
 #include <math.h>
 #include <iostream>
