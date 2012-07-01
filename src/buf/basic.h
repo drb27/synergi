@@ -25,11 +25,15 @@ struct rawbuffer_t
 
 	virtual byte_t* detach(void)
 	{
+		byte_t* retVal = buffer;
+
 		if(buffer)
 		{
 			free(buffer);
 			buffer=0;
 		}
+
+		return retVal;
 	}
 
 	virtual ~rawbuffer_t()
