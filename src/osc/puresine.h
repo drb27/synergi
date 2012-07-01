@@ -17,7 +17,7 @@ namespace engine {
 
 class puresine: public synergi::engine::oscillator {
 public:
-	puresine();
+	puresine(double freq, uint16_t wvAmplitude, uint16_t wvOffset);
 	virtual ~puresine();
 
 	//virtual void synthesize(circularbuffer<uint16_t>&, uint32_t);
@@ -27,6 +27,8 @@ protected:
 	double phase;
 	const uint32_t sampleRate;
 	const double frequency;
+	const uint16_t amplitude;
+	const uint16_t offset;
 };
 
 } /* namespace engine */
