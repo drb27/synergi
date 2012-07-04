@@ -24,7 +24,8 @@ public:
 	virtual void populate(rawbuffer_t* pbuf);
 
 protected:
-	double phase;
+	uint32_t sampleIndex;
+	double tOffset;
 	const uint32_t sampleRate;
 	const double frequency;
 	const uint16_t amplitude;

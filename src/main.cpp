@@ -144,7 +144,7 @@ void test_buffer()
 	u.set_name("Unity Gain Block");
 	std::cout << "The name of the DSP Block is " << u.get_name() << std::endl;
 
-	tremolo t(u,10.0,1.0);
+	tremolo t(u,1.0,1.0);
 	t.set_name("LFO Driven Tremolo");
 	std::cout << "The name of the Tremolo Block is " << t.get_name() << std::endl;
 
@@ -154,12 +154,12 @@ void test_buffer()
 #ifdef DUMP
 
 	{
-		rawbuffer_t* pBuf = t.pull(32000);
+		rawbuffer_t* pBuf = t.pull(64000);
 
 		std::ofstream f;
 		f.open("output.csv");
 
-		for ( uint16_t* ptr = (uint16_t*)pBuf->buffer; ptr < (uint16_t*)((pBuf->buffer)+16000); ptr+=2)
+		for ( uint16_t* ptr = (uint16_t*)pBuf->buffer; ptr < (uint16_t*)((pBuf->buffer)+32000); ptr+=2)
 		{
 			f << *ptr << "," << *(ptr+1) << std::endl;
 		}
