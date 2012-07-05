@@ -29,5 +29,11 @@ component::~component() {
 	// TODO Auto-generated destructor stub
 }
 
+void component::rx_midi_event( const midi::msg_t& msg) const
+{
+
+}
+
+
 } /* namespace engine */
 } /* namespace synergi */
