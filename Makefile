@@ -7,7 +7,7 @@ LIBS=-lasound
 SYNERGI_OBJS=src/eng/source.o src/eng/midilistener.o src/eng/component.o src/dsp/tremolo.o src/dsp/unitygain.o src/eng/inlet.o src/eng/outlet.o src/eng/transform.o src/eng/sink.o src/dsp/dsp.o src/main.o src/osc/wavetable.o src/osc/oscillator.o src/osc/puresine.o src/buf/circularbuffer.o src/osc/silence.o
 TEST_MODULES=$(wildcard src/tst/*.cpp)
 TEST_OBJS=$(TEST_MODULES:.cpp=.o)
-TEST_TARGETS=src/buf/circularbuffer.o src/osc/wavetable.o
+TEST_TARGETS=src/buf/circularbuffer.o src/osc/wavetable.o src/osc/oscillator.o src/eng/outlet.o src/eng/component.o src/eng/source.o src/dsp/dsp.o src/eng/inlet.o src/eng/midilistener.o src/osc/puresine.o
 
 sources.d:
 	tools/enumeratesources
