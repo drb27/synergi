@@ -8,8 +8,13 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include "common/types.h"
 
 #include "PuresineTest.h"
+
+#include "buf/basic.h"
+#include "osc/puresine.h"
+#include <malloc.h>
 
 using namespace CppUnit;
 
@@ -27,6 +32,30 @@ PuresineTest::~PuresineTest() {
 
 void PuresineTest::synthesize_onehour()
 {
+	const uint32_t Iterations = 44100*60*60/8000;
+
+
+
+	// Create a puresine
+	synergi::engine::puresine o(440.0,2000,32000);
+
+	struct mallinfo old = mallinfo();
+
+	for (uint32_t i = 0 ; i < Iterations ; i++)
+	{
+		// Synthesize a chunk
+		engine::rawbuffer_t* pBuf = o.pull(4000);
+
+		// Check the offset
+		const double& offset = o.tOffset;
+
+		CPPUNIT_ASSERT_MESSAGE("Offset buildup detected",offset < 1000.0);
+
+		delete pBuf;
+	}
+
+	  struct mallinfo now = mallinfo();
+	  CPPUNIT_ASSERT_EQUAL(old.uordblks,now.uordblks);
 
 }
 

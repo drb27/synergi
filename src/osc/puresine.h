@@ -10,7 +10,9 @@
 
 #include "oscillator.h"
 
-// Hi
+namespace synergi { namespace test {
+class PuresineTest;
+} }
 
 namespace synergi {
 namespace engine {
@@ -30,6 +32,8 @@ protected:
 	const double frequency;
 	const uint16_t amplitude;
 	const uint16_t offset;
+
+	friend class synergi::test::PuresineTest;
 };
 
 } /* namespace engine */
