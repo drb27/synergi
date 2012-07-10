@@ -9,7 +9,7 @@
 #include "common/types.h"
 #include "circularbuffer.h"
 #include <stdlib.h>
-
+#include <iostream>
 namespace synergi
 {
 namespace engine
@@ -84,6 +84,7 @@ uint32_t circularbuffer<T>::length(void) const
 	}
 	else
 	{
+	  std::cout << "This line is executed" << std::endl;
 		return pNextWriteByte+capacity()-pNextReadByte;
 	}
 }

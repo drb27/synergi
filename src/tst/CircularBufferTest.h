@@ -38,6 +38,7 @@ public:
 	void underrun();
 	void overrun();
 	void simple_wrap();
+	void wrap_length();
 
 	CPPUNIT_TEST_SUITE( CircularBufferTest );
 	CPPUNIT_TEST( new_is_empty );
@@ -48,6 +49,7 @@ public:
 	CPPUNIT_TEST( underrun );
 	CPPUNIT_TEST( overrun );
 	CPPUNIT_TEST( simple_wrap );
+	CPPUNIT_TEST( wrap_length );
 	CPPUNIT_TEST_SUITE_END();
 };
 

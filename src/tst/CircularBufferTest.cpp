@@ -73,12 +73,43 @@ void CircularBufferTest::overrun()
 	do
 	{
 		b.insert(0xFF);
+		CPPUNIT_ASSERT(b.length()==1+count);
 	} while (++count<sz);
 
 	CPPUNIT_ASSERT(b.length()==b.capacity());
 	CPPUNIT_ASSERT_THROW_MESSAGE("No exception on buffer overrun",b.insert(0xAA),circularbuffer::overrun);
 	CPPUNIT_ASSERT(b.length()==b.capacity());
 }
+
+void CircularBufferTest::wrap_length()
+{
+  // Checks that the length is good when wrapped and not full or empty
+  const uint32_t sz=6;
+  circularbuffer b(44100,sz);
+
+  // Check empty length
+  CPPUNIT_ASSERT(b.length()==0);
+
+  // Populate buffer with three items
+  b.insert(0xAABB);
+  b.insert(0xAA);
+  b.insert(0xAA);
+
+  // Remove those three
+  b.extract(), b.extract(), b.extract();
+
+  // Add another five
+  b.insert(0xAABB);
+  b.insert(0xAA);
+  b.insert(0xAA);
+  b.insert(0xAABB);
+  b.insert(0xB00B);
+
+  // Check that the length is five
+  CPPUNIT_ASSERT(b.length()==5);
+  
+}
+
 
 void CircularBufferTest::simple_wrap()
 {
