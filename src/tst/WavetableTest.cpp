@@ -38,6 +38,14 @@ void WavetableTest::contains_empty()
 	  delete t;
 }
 
+void WavetableTest::detach_rawbuffer()
+{
+  using synergi::engine::rawbuffer_t;
+  rawbuffer_t t(100);
+  t.detach();
+  t.detach();
+}
+
 void WavetableTest::contains_wrong()
 {
 	  using synergi::engine::rawbuffer_t;

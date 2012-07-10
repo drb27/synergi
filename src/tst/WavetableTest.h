@@ -38,6 +38,7 @@ public:
 	virtual void lookup_empty();
 	virtual void lookup_notpresent();
 	virtual void lookup_present();
+	virtual void detach_rawbuffer();
 
 	CPPUNIT_TEST_SUITE( WavetableTest );
 	CPPUNIT_TEST( mem_dispose );
@@ -48,6 +49,7 @@ public:
 	CPPUNIT_TEST( lookup_empty );
 	CPPUNIT_TEST( lookup_notpresent );
 	CPPUNIT_TEST( lookup_present);
+	CPPUNIT_TEST( detach_rawbuffer );
 	CPPUNIT_TEST_SUITE_END();
 };
 
