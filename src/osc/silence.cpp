@@ -10,7 +10,10 @@
 #include "buf/circularbuffer.h"
 #include "silence.h"
 
-s_namespace_2(synergi,engine)
+namespace synergi
+{
+namespace engine
+{
 
 silence::silence() {
 	// TODO Auto-generated constructor stub
@@ -27,4 +30,5 @@ void silence::synthesize(circularbuffer<uint16_t>& buffer, uint32_t samples)
 	throw x;
 }
 
-s_namespace_end_2
+}
+}

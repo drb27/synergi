@@ -12,7 +12,10 @@
 #include "common/types.h"
 #include "oscillator.h"
 
-s_namespace_2(synergi,engine)
+namespace synergi
+{
+namespace engine
+{
 
 class silence : public oscillator {
 public:
@@ -21,6 +24,7 @@ public:
 	virtual void synthesize(circularbuffer<uint16_t>&,uint32_t);
 };
 
-s_namespace_end_2
+}
+}
 
 #endif /* SILENCE_H_ */

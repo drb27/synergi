@@ -14,7 +14,10 @@
 
 #include <memory.h>
 
-s_namespace_2(synergi,engine)
+namespace synergi
+{
+namespace engine
+{
 
 struct rawbuffer_t
 {
@@ -60,7 +63,8 @@ struct rawbuffer_t
 	uint32_t count;
 };
 
-s_namespace_end_2
+}
+}
 
 #endif /* BASIC_H_ */
 

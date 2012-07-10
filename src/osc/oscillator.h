@@ -26,7 +26,10 @@ class WavetableTest;
 }
 }
 
-s_namespace_2(synergi,engine)
+namespace synergi
+{
+namespace engine
+{
 
 class oscillator : public source
 {
@@ -52,6 +55,7 @@ public:
 	wavetable waveTable;
 };
 
-s_namespace_end_2
+}
+}
 
 #endif /* OSCILLATOR_H_ */

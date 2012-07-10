@@ -16,8 +16,10 @@
 #define DEFAULT_SAMPLE_RATE 44100
 #define DEFAULT_SIZE 1024
 
-
-s_namespace_2(synergi,engine)
+namespace synergi
+{
+namespace engine
+{
 
 template<class T>
 class circularbuffer
@@ -67,7 +69,8 @@ public:
 	circularbuffer<T>& operator>>(rawbuffer_t& rawBuffer);
 };
 
-s_namespace_end_2
+}
+}
 
 #endif /* CIRCULARBUFFER_H_ */
 

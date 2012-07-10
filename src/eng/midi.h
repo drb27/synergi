@@ -11,7 +11,11 @@
 #include "common/ns.h"
 #include "common/types.h"
 
-s_namespace_2(synergi,engine)
+namespace synergi
+{
+
+namespace engine
+{
 
 namespace midi
 {
@@ -33,6 +37,7 @@ namespace midi
 
 }
 
-s_namespace_end_2
+}
+}
 
 #endif /* MIDI_H_ */

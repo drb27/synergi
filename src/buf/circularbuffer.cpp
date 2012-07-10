@@ -10,7 +10,10 @@
 #include "circularbuffer.h"
 #include <stdlib.h>
 
-s_namespace_2(synergi,engine)
+namespace synergi
+{
+namespace engine
+{
 
 template<class T>
 circularbuffer<T>::circularbuffer(uint32_t rate, uint32_t sz, ChannelConfig cc)
@@ -108,4 +111,5 @@ circularbuffer<T>& circularbuffer<T>::operator >>(rawbuffer_t& buffer)
 template class synergi::engine::circularbuffer<synergi::byte_t>;
 template class synergi::engine::circularbuffer<uint16_t>;
 
-s_namespace_end_2
+}
+}
