@@ -11,7 +11,10 @@
 #include "eng/source.h"
 #include "oscillator.h"
 
-s_namespace_2(synergi,engine)
+namespace synergi
+{
+namespace engine
+{
 
 oscillator::oscillator(double f, double a) : freq(f), amplitude(a)
 {
@@ -21,5 +24,6 @@ oscillator::oscillator(double f, double a) : freq(f), amplitude(a)
 oscillator::~oscillator()
 {
 }
+}
+}
 
-s_namespace_end_2

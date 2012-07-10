@@ -6,6 +6,7 @@
  */
 
 #include "buf/basic.h"
+#include "component.h"
 #include "source.h"
 
 namespace synergi
@@ -13,7 +14,7 @@ namespace synergi
 namespace engine
 {
 
-source::source()
+source::source() : component()
 {
 	// TODO Auto-generated constructor stub
 
@@ -24,11 +25,10 @@ source::~source()
 	// TODO Auto-generated destructor stub
 }
 
-rawbuffer_t* source::pull(uint32_t sampleCount)
+rawbuffer_t* source::get_src_buffer(uint32_t sampleCount)
 {
-	rawbuffer_t* pBuf = new rawbuffer_t(sampleCount);
-	populate(pBuf);
-	return pBuf;
+	// A source generates new buffers (overriding behaviour in outlet)
+	return new rawbuffer_t(sampleCount);
 }
 
 } /* namespace engine */

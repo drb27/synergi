@@ -9,8 +9,11 @@
 #include "common/types.h"
 #include "circularbuffer.h"
 #include <stdlib.h>
-
-s_namespace_2(synergi,engine)
+#include <iostream>
+namespace synergi
+{
+namespace engine
+{
 
 template<class T>
 circularbuffer<T>::circularbuffer(uint32_t rate, uint32_t sz, ChannelConfig cc)
@@ -81,6 +84,7 @@ uint32_t circularbuffer<T>::length(void) const
 	}
 	else
 	{
+	  std::cout << "This line is executed" << std::endl;
 		return pNextWriteByte+capacity()-pNextReadByte;
 	}
 }
@@ -108,4 +112,5 @@ circularbuffer<T>& circularbuffer<T>::operator >>(rawbuffer_t& buffer)
 template class synergi::engine::circularbuffer<synergi::byte_t>;
 template class synergi::engine::circularbuffer<uint16_t>;
 
-s_namespace_end_2
+}
+}

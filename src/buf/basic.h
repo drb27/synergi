@@ -12,7 +12,12 @@
 #include "common/ns.h"
 #include <stdlib.h>
 
-s_namespace_2(synergi,engine)
+#include <memory.h>
+
+namespace synergi
+{
+namespace engine
+{
 
 struct rawbuffer_t
 {
@@ -23,13 +28,28 @@ struct rawbuffer_t
 		count=0;
 	}
 
+	rawbuffer_t(const rawbuffer_t& other)
+	{
+		// Set up an identical buffer
+		buffer=(byte_t*)malloc(other.size);
+		size=other.size;
+		count = other.count;
+
+		// Copy the contents
+		memcpy(buffer,other.buffer,size);
+	}
+
 	virtual byte_t* detach(void)
 	{
+		byte_t* retVal = buffer;
+
 		if(buffer)
 		{
 			free(buffer);
 			buffer=0;
 		}
+
+		return retVal;
 	}
 
 	virtual ~rawbuffer_t()
@@ -43,7 +63,8 @@ struct rawbuffer_t
 	uint32_t count;
 };
 
-s_namespace_end_2
+}
+}
 
 #endif /* BASIC_H_ */
 

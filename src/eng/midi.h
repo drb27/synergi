@@ -11,15 +11,33 @@
 #include "common/ns.h"
 #include "common/types.h"
 
-s_namespace_2(synergi,engine)
+namespace synergi
+{
+
+namespace engine
+{
 
 namespace midi
 {
 
   typedef uint8_t note_t;
 
+  enum msgtype_t
+  {
+	  MSG_NOTEON,
+	  MSG_NOTEOFF
+  };
+
+  struct msg_t
+  {
+	  msgtype_t msg;
+	  note_t paramA;
+	  note_t paramB;
+  };
+
 }
 
-s_namespace_end_2
+}
+}
 
 #endif /* MIDI_H_ */

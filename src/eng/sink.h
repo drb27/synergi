@@ -8,12 +8,15 @@
 #ifndef SINK_H_
 #define SINK_H_
 
+#include "component.h"
+#include "inlet.h"
+
 namespace synergi
 {
 namespace engine
 {
 
-class sink
+class sink : public inlet
 {
 public:
 	sink();

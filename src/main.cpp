@@ -8,6 +8,7 @@
 #include "common/ns.h"
 #include "common/types.h"
 #include "buf/basic.h"
+#include "eng/eng.h"
 #include "buf/circularbuffer.h"
 #include "osc/oscillator.h"
 #include "osc/puresine.h"
@@ -15,6 +16,10 @@
 #include <alsa/asoundef.h>
 #include <alsa/asoundlib.h>
 #include <fstream>
+
+#include "dsp/dsp.h"
+#include "dsp/unitygain.h"
+#include "dsp/tremolo.h"
 
 #define GREEN(X) "\33[32;40m" << X << "\33[0m"
 #define RED(X) "\33[0;31m" << X << "\33[0m"
@@ -126,29 +131,42 @@ void test_buffer()
 {
 	using synergi::engine::circularbuffer;
 	using synergi::engine::puresine;
+	using synergi::dsp::unitygain;
+	using synergi::dsp::tremolo;
 
 	// Create a sine wave oscillator
-	puresine o;
+	puresine o(440.0,8000,32000);
+	o.set_name("Sine Wave Generator");
+	std::cout << "The name of the oscillator is " << o.get_name() << std::endl;
 
-	std::cout << "Synthesizing ..." << std::endl;
+	// Create a unity gain DSP block, ahead of the oscillator
+	unitygain u(o);
+	u.set_name("Unity Gain Block");
+	std::cout << "The name of the DSP Block is " << u.get_name() << std::endl;
 
-	// Synthesize 40 whole waves
-	rawbuffer_t* pBuf = o.pull(16000);
+	tremolo t(u,1.0,1.0);
+	t.set_name("LFO Driven Tremolo");
+	std::cout << "The name of the Tremolo Block is " << t.get_name() << std::endl;
 
-	std::cout << "Extracting ..." << std::endl;
 
 	// Output to a CSV
 
 #ifdef DUMP
-	std::ofstream f;
-	f.open("output.csv");
 
-	for ( uint16_t* ptr = (uint16_t*)pBuf->buffer; ptr < (uint16_t*)((pBuf->buffer)+4000); ptr+=2)
 	{
-		f << *ptr << "," << *(ptr+1) << std::endl;
+		rawbuffer_t* pBuf = t.pull(64000);
+
+		std::ofstream f;
+		f.open("output.csv");
+
+		for ( uint16_t* ptr = (uint16_t*)pBuf->buffer; ptr < (uint16_t*)((pBuf->buffer)+32000); ptr+=2)
+		{
+			f << *ptr << "," << *(ptr+1) << std::endl;
+		}
+
+		f.close();
 	}
 
-	f.close();
 #endif
 
 	// Play that damn mother!
@@ -166,13 +184,16 @@ void test_buffer()
 
 
 	do {
-	    while ((pcmreturn = snd_pcm_writei(pcm_handle, pBuf->buffer, frames)) < 0) {
+		rawbuffer_t* pBuf = t.pull(periodsize);
+	    while ((pcmreturn = snd_pcm_writei(pcm_handle, pBuf->buffer, frames)) < 0)
+	    {
 	        snd_pcm_prepare(pcm_handle);
 	    }
+
+	    delete pBuf;
+
 	} while (true);
 
-	// Delete buffer
-	delete pBuf;
 
 	std::cout << "Natural termination" << std::endl;
 }
