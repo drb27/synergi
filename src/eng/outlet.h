@@ -8,10 +8,10 @@
 #ifndef OUTLET_H_
 #define OUTLET_H_
 
+#include "component.h"
+
 namespace synergi {
 namespace engine {
-
-#include "component.h"
 
 class outlet : public virtual component
 {

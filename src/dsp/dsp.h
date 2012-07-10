@@ -16,9 +16,9 @@ namespace synergi
 namespace dsp
 {
 
-using engine::rawbuffer_t;
-using engine::inlet;
-using engine::outlet;
+using synergi::engine::rawbuffer_t;
+using synergi::engine::inlet;
+using synergi::engine::outlet;
 
 extern const double PI;
 
