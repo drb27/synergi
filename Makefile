@@ -39,6 +39,7 @@ all: synergi test
 coverage: test
 	./test
 	cd cov; lcov --capture --output-file app.info -b /home/drb/workspace/synergi --directory /home/drb/workspace/synergi/src
+	cd cov; lcov --remove app.info "/usr*" -o app.info
 	cd cov; genhtml app.info
 	xdg-open cov/index.html &
 clean:
