@@ -5,7 +5,7 @@
  *      Author: drb
  */
 
-#include "buf/basic.h"
+#include "buf/rawbuffer.h"
 #include "component.h"
 #include "outlet.h"
 

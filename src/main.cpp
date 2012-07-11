@@ -7,7 +7,7 @@
 
 #include "common/ns.h"
 #include "common/types.h"
-#include "buf/basic.h"
+#include "buf/rawbuffer.h"
 #include "eng/eng.h"
 #include "buf/circularbuffer.h"
 #include "osc/oscillator.h"

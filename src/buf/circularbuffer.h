@@ -10,7 +10,7 @@
 
 #include "common/types.h"
 #include "common/ns.h"
-#include "basic.h"
+#include "rawbuffer.h"
 #include <exception>
 
 #define DEFAULT_SAMPLE_RATE 44100

@@ -78,15 +78,18 @@ uint32_t circularbuffer<T>::length(void) const
 	if (is_empty()) return 0;
 	if (is_full()) return capacity();
 
+	uint32_t result=0;
+
 	if (pNextWriteByte>pNextReadByte)
 	{
-		return pNextWriteByte-pNextReadByte;
+		result= pNextWriteByte-pNextReadByte;
 	}
 	else
 	{
-	  std::cout << "This line is executed" << std::endl;
-		return pNextWriteByte+capacity()-pNextReadByte;
+		result = pNextWriteByte+capacity()-pNextReadByte;
 	}
+
+	return result;
 }
 
 template<class T>

@@ -8,7 +8,7 @@
 #ifndef DSP_H_
 #define DSP_H_
 
-#include "buf/basic.h"
+#include "buf/rawbuffer.h"
 #include "eng/eng.h"
 
 namespace synergi

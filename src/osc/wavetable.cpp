@@ -5,7 +5,7 @@
  *      Author: drb
  */
 
-#include "buf/basic.h"
+#include "buf/rawbuffer.h"
 #include "eng/midi.h"
 #include <map>
 #include "wavetable.h"

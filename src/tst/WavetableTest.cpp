@@ -11,7 +11,7 @@
 #include <stdlib.h>
 
 
-#include "buf/basic.h"
+#include "buf/rawbuffer.h"
 #include "eng/midi.h"
 #include "WavetableTest.h"
 #include "osc/wavetable.h"

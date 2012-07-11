@@ -5,4 +5,4 @@ src/tst/CircularBufferTest.d src/tst/CircularBufferTest.o: \
  /usr/include/cppunit/extensions/TestFactoryRegistry.h \
  /usr/include/cppunit/ui/text/TextTestRunner.h \
  /usr/include/cppunit/extensions/HelperMacros.h src/buf/circularbuffer.h \
- src/common/types.h src/common/ns.h src/buf/basic.h
+ src/common/types.h src/common/ns.h src/buf/rawbuffer.h

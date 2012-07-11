@@ -12,7 +12,7 @@
 
 #include "PuresineTest.h"
 
-#include "buf/basic.h"
+#include "buf/rawbuffer.h"
 #include "osc/puresine.h"
 #include <malloc.h>
 
