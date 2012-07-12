@@ -11,6 +11,11 @@
 *.la
 *.a
 
+# Code Coverage outputs
+*.gcda
+*.gcno
+cov/
+
 #project specific
 .settings
 .project
