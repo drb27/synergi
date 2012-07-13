@@ -32,6 +32,8 @@ protected:
 	virtual rawbuffer_t* get_src_buffer(uint32_t sampleCount);
 	virtual void transform(const rawbuffer_t& pSrc, rawbuffer_t* pDest) const =0;
 
+	dsp();
+
 };
 
 } /* namespace engine */

@@ -7,7 +7,7 @@ LIBS=-lasound -lgcov
 SYNERGI_OBJS=src/eng/source.o src/buf/rawbuffer.o src/eng/midilistener.o src/eng/component.o src/dsp/tremolo.o src/dsp/unitygain.o src/eng/inlet.o src/eng/outlet.o src/eng/transform.o src/eng/sink.o src/dsp/dsp.o src/main.o src/osc/wavetable.o src/osc/oscillator.o src/osc/puresine.o src/buf/circularbuffer.o src/osc/silence.o
 TEST_MODULES=$(wildcard src/tst/*.cpp)
 TEST_OBJS=$(TEST_MODULES:.cpp=.o)
-TEST_TARGETS=src/buf/circularbuffer.o src/buf/rawbuffer.o src/osc/wavetable.o src/osc/oscillator.o src/eng/outlet.o src/eng/component.o src/eng/source.o src/dsp/dsp.o src/eng/inlet.o src/eng/midilistener.o src/osc/puresine.o
+TEST_TARGETS=src/buf/circularbuffer.o src/dsp/unitygain.o src/buf/rawbuffer.o src/osc/wavetable.o src/osc/oscillator.o src/eng/outlet.o src/eng/component.o src/eng/source.o src/dsp/dsp.o src/eng/inlet.o src/eng/midilistener.o src/osc/puresine.o
 
 ifdef COVERAGE
 LIBS += -lgcov
@@ -40,6 +40,7 @@ coverage: test
 	./test
 	cd cov; lcov --capture --output-file app.info -b /home/drb/workspace/synergi --directory /home/drb/workspace/synergi/src
 	cd cov; lcov --remove app.info "/usr*" -o app.info
+	cd cov; lcov --remove app.info "/src/tst*" -o app.info
 	cd cov; genhtml app.info
 	xdg-open cov/index.html &
 clean:

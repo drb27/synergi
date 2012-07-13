@@ -13,10 +13,12 @@
 #include "CircularBufferTest.h"
 #include "WavetableTest.h"
 #include "PuresineTest.h"
+#include "DspTest.h"
 
 CPPUNIT_TEST_SUITE_REGISTRATION(synergi::test::CircularBufferTest);
 CPPUNIT_TEST_SUITE_REGISTRATION(synergi::test::WavetableTest);
 CPPUNIT_TEST_SUITE_REGISTRATION(synergi::test::PuresineTest);
+CPPUNIT_TEST_SUITE_REGISTRATION(synergi::test::DspTest);
 
 /********************************************************************************
  * FN: main()

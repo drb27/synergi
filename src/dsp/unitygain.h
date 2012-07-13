@@ -11,6 +11,9 @@
 #include "dsp.h"
 
 namespace synergi {
+
+namespace test { class DspTest; }
+
 namespace dsp {
 
 class unitygain: public dsp
@@ -20,6 +23,11 @@ public:
 	virtual ~unitygain();
 
 	virtual void transform(const rawbuffer_t& pSrc, rawbuffer_t* pDest) const;
+
+protected:
+	unitygain();
+
+	friend class synergi::test::DspTest;
 
 };
 

@@ -21,6 +21,11 @@ dsp::dsp(outlet& srcOutlet) : component(), inlet(&srcOutlet)
 
 }
 
+dsp::dsp() : component(),inlet()
+{
+
+}
+
 dsp::~dsp()
 {
 	// TODO Auto-generated destructor stub
