@@ -15,8 +15,8 @@ namespace synergi
 namespace engine
 {
 
-silence::silence() {
-	// TODO Auto-generated constructor stub
+silence::silence(uint16_t offset) : zeroOffset(offset)
+{
 
 }
 
@@ -24,10 +24,20 @@ silence::~silence() {
 	// TODO Auto-generated destructor stub
 }
 
-void silence::synthesize(circularbuffer<uint16_t>& buffer, uint32_t samples)
+void silence::populate(rawbuffer_t* pBuf)
 {
-	oscillator::synthesis x;
-	throw x;
+
+	uint16_t* pNextSample = (uint16_t*)pBuf->buffer;
+
+	for ( int i = 0 ; i < (pBuf->size/4) ; i++)
+	{
+
+		// Insert the samples into the buffer
+		*(pNextSample++) = zeroOffset;
+		*(pNextSample++) = zeroOffset;
+
+	}
+
 }
 
 }

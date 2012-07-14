@@ -19,9 +19,11 @@ namespace engine
 
 class silence : public oscillator {
 public:
-	silence();
+	silence(uint16_t offset);
 	virtual ~silence();
-	virtual void synthesize(circularbuffer<uint16_t>&,uint32_t);
+protected:
+	virtual void populate(rawbuffer_t*);
+	uint16_t zeroOffset;
 };
 
 }
