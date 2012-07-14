@@ -49,6 +49,8 @@ public:
 	CPPUNIT_TEST( populate );
 	CPPUNIT_TEST( silence );
 	CPPUNIT_TEST_SUITE_END();
+
+private:
 	bool test_silence(synergi::engine::rawbuffer_t* pBuf, uint16_t Offset);
 };
 
